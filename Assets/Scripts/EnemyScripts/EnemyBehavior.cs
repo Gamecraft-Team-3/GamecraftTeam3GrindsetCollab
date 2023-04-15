@@ -5,20 +5,21 @@ using UnityEngine.AI;
 
 public class EnemyBehavior : MonoBehaviour
 {
-    [SerializeField] private GameObject wayPointParent = null;
     [SerializeField] private int numWayPointsToPatrol = 0;
     [SerializeField] private Animator anim = null;
     [SerializeField] private NavMeshAgent agent = null;
-    private List<Vector3> wayPoints = null;
-    private EnemyManager enemyManager = null;
+    [SerializeField] public GameObject wayPointParent = null;
+    private List<Vector3> wayPoints = new List<Vector3>();
+    [SerializeField] private EnemyManager enemyManager = null;
     private GameObject player = null;
-    private float distanceToPlayer;
+    private float distanceToPlayer = 100;
     // Start is called before the first frame update
     void Start()
     {
+        GetInitialStuff();
         SetWayPoints();
-        enemyManager = GameObject.Find("EnemyManager").GetComponent<EnemyManager>();
-        player = enemyManager.GetPlayer();
+
+        Debug.Log("I am here");
     }
 
     // Update is called once per frame
@@ -27,19 +28,17 @@ public class EnemyBehavior : MonoBehaviour
 
     }
 
+    public void GetInitialStuff()
+    {
+        enemyManager = FindAnyObjectByType<EnemyManager>();
+        wayPointParent = GameObject.Find("WayPointList");
+        player = enemyManager.GetPlayer();
+    }
     #region Getter Functions
     //Returns the distacne from the player
     public float GetPlayerDistance()
     {
-        #region Calculations
-        float xOne = player.transform.position.x;
-        float xTwo = this.transform.position.x;
-        float yOne = player.transform.position.y;
-        float yTwo = player.transform.position.y;
-        float a = Mathf.Abs((xOne - xTwo) * (xOne - xTwo));
-        float b = Mathf.Abs((yOne - yTwo) * (yOne - yTwo));
-        #endregion
-        distanceToPlayer = Mathf.Sqrt(a + b);
+        distanceToPlayer = Vector3.Distance(player.transform.position, this.transform.position);
         return distanceToPlayer;
     }
 
@@ -57,7 +56,12 @@ public class EnemyBehavior : MonoBehaviour
 
     public Vector3 GetRandomWayPoint()
     {
-        int temp = Random.Range(0, wayPoints.Count - 1);
+        if(wayPoints.Count == 0)
+        {
+            Debug.Log("I have no Waypoints");
+            return new Vector3(0, 0, 0);
+        }
+        int temp = Random.Range(0, wayPoints.Count);
         return wayPoints[temp];
     }
 
@@ -72,8 +76,7 @@ public class EnemyBehavior : MonoBehaviour
     {
         for(int i = 0; i < numWayPointsToPatrol; i ++)
         {
-            int pos = wayPointParent.transform.GetChild(Random.Range(0, wayPointParent.transform.childCount - 1)).GetSiblingIndex();
-            wayPoints.Add(wayPointParent.transform.GetChild(pos).position);
+            wayPoints.Add(wayPointParent.transform.GetChild(Random.Range(0, wayPointParent.transform.childCount - 1)).position);
         }
     }
 
@@ -85,6 +88,11 @@ public class EnemyBehavior : MonoBehaviour
     public void ClearEnemyDestination()
     {
         agent.ResetPath();
+    }
+
+    public void DestroySelf()
+    {
+        enemyManager.DestroyEnemy(this.gameObject);
     }
     #endregion
 }

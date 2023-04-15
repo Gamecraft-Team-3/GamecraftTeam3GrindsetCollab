@@ -6,12 +6,16 @@ public class EnemyManager : MonoBehaviour
 {
     [SerializeField] private GameObject enemyObject, player, spawnPointParent;
     [SerializeField] private float enemySpawningTimer = 0;
-    private List<Vector3> enemySpawnPoints;
+    [SerializeField] private int maxEnemies = 0;
+    private List<GameObject> currentEnemies;
+    private List<Vector3> enemySpawnPoints = new List<Vector3>();
     // Start is called before the first frame update
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
         SetSpawnPoints();
+
+        StartSpawning();
     }
 
     // Update is called once per frame
@@ -20,30 +24,41 @@ public class EnemyManager : MonoBehaviour
         
     }
 
-    private void SpawnWave(int enemyCount)
+    public void DestroyEnemy(GameObject enemyToDestroy)
     {
-        StartCoroutine(EnemySeperationTimer(enemyCount));
+        currentEnemies.Remove(enemyToDestroy);
+        Destroy(enemyToDestroy);
+    }
+
+    #region Enemy Spawning Jazz
+    private void StartSpawning()
+    {
+        StartCoroutine(EnemySeperationTimer());
     }
 
     private void SpawnEnemy()
     {
+        GameObject instance;
         if(enemySpawnPoints.Count <= 0)
         {
             return;
         }
         int pos = Random.Range(0, enemySpawnPoints.Count);
-        Instantiate(enemyObject, enemySpawnPoints[pos], enemyObject.transform.rotation);
+        instance = Instantiate(enemyObject, enemySpawnPoints[pos], enemyObject.transform.rotation);
+        currentEnemies.Add(instance);
     }
 
-    private IEnumerator EnemySeperationTimer(int enemyCount)
+    private IEnumerator EnemySeperationTimer()
     {
-        for(int i = 0; i < enemyCount; i ++)
+/*        yield return new WaitForSeconds(0.5f);
+*/        while(currentEnemies.Count < maxEnemies)
         {
             yield return new WaitForSeconds(enemySpawningTimer);
             SpawnEnemy();
         }
+        StartCoroutine(EnemySeperationTimer());
     }
-
+    #endregion
     #region Getter Functions
     public GameObject GetPlayer()
     {
