@@ -13,6 +13,7 @@ public class LaserScript : MonoBehaviour
     [SerializeField] private float colliderDelay = 0.05f;
     [SerializeField] private int scoreForKill = 100;
     [SerializeField] private float scoreMultiplier = 1;
+
     private Vector3 direction;
     private Rigidbody body;
 
