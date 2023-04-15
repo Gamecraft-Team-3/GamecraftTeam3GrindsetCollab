@@ -7,17 +7,20 @@ using UnityEngine.Video;
 
 public class PlayerInputController : MonoBehaviour
 {
+    public static PlayerInputController Instance;
+
     private PlayerInputActions _playerInputActions;
 
     public event EventHandler OnShootAction;
-
-
+    
     private void Awake()
     {
         _playerInputActions = new PlayerInputActions();
         _playerInputActions.Enable();
         
         _playerInputActions.Play.Shoot.performed += OnShootPerformed;
+
+        Instance = this;
     }
 
     private void OnShootPerformed(InputAction.CallbackContext context) 
