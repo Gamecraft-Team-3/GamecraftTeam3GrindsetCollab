@@ -10,9 +10,10 @@ namespace Player
         //[Header("Objects")] 
         //[Header("Components")] 
         //[Header("Fields")] 
-        
+            
         [Header("Values")] 
         [SerializeField] private int score;
+        [SerializeField] private int health, maxHealth;
         
         private void Awake()
         {
@@ -29,6 +30,22 @@ namespace Player
         public int GetScore()
         {
             return score;
+        }
+
+        public void Damage(int damage)
+        {
+            health -= damage;
+
+            if (health < 0)
+                health = 0;
+
+            if (health == 0)
+                Debug.Log("Player Died");
+        }
+
+        public int GetHealthPercentage()
+        {
+            return Mathf.RoundToInt((float)health / (float)maxHealth);
         }
     }
 }
