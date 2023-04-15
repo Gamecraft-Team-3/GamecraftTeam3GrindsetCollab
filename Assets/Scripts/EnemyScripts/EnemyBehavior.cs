@@ -6,7 +6,6 @@ using UnityEngine.AI;
 public class EnemyBehavior : MonoBehaviour
 {
     [SerializeField] private int numWayPointsToPatrol = 0;
-    [SerializeField] private Animator anim = null;
     [SerializeField] private NavMeshAgent agent = null;
     private GameObject wayPointParent = null;
     [SerializeField] private float idleTimer = 0;
@@ -39,6 +38,7 @@ public class EnemyBehavior : MonoBehaviour
 
     public void StartShouldMoveTimer()
     {
+        shouldMove = false;
         StartCoroutine(MoveTimer());
     }
 
