@@ -1,5 +1,7 @@
 using System;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 namespace Player
 {
@@ -8,11 +10,16 @@ namespace Player
         [Header("Objects")]
         [SerializeField] private Camera camera;
         [SerializeField] private Transform tiltSource, moveForwardSource;
+        [SerializeField] private Transform bulletOrigin, bulletSource;
 
-        [Header("Fields")]
+        [Header("Fields")] 
+        [SerializeField] private float rJoyLerpSpeed;
         [SerializeField] private float turnDampTime;
         [SerializeField] private float tiltLerpSpeed;
         [SerializeField] [Range(0, 90)] private float tiltDegrees;
+        [SerializeField] private Material laserMaterial;
+        [SerializeField] private Gradient laserColor;
+        [SerializeField] private AnimationCurve laserCurve;
 
         [Header("Values")]
         [SerializeField] private Vector2 prevDir;
@@ -20,21 +27,34 @@ namespace Player
         private bool _doMouseCheck;
         private Vector2 _prevMouse;
         private Vector2 _smoothMove;
-        
+        private LineRenderer _lookLaser;
+        private Vector2 _look;
+
+        private void Start()
+        {
+            _lookLaser = gameObject.AddComponent<LineRenderer>();
+            _lookLaser.material = laserMaterial;
+            _lookLaser.colorGradient = laserColor;
+            _lookLaser.widthCurve = laserCurve;
+            _lookLaser.shadowCastingMode = ShadowCastingMode.Off;
+        }
+
         private void Update()
         {
             Vector2 move = PlayerInputController.Instance.GetMove();
-            Vector2 look = PlayerInputController.Instance.GetRJoystick();
+            Vector2 lookRaw = PlayerInputController.Instance.GetRJoystick();
+            _look = Vector2.Lerp(_look, lookRaw, rJoyLerpSpeed * Time.deltaTime);
             Vector2 mouse = PlayerInputController.Instance.GetMousePosition();
 
             #region Player Looks Forward
             
-            
             Vector2 finalLook = Vector2.zero;
-
-            if (!look.Equals(Vector2.zero))
+            
+            if (!lookRaw.Equals(Vector2.zero))
             {
-                finalLook = look.normalized;
+                finalLook = _look.normalized;
+                
+                Debug.Log("Joy");
                 
                 prevDir = finalLook;
 
@@ -73,8 +93,9 @@ namespace Player
             forward.y = 0;
 
             transform.forward = Vector3.SmoothDamp(transform.forward, forward, ref _vecDamp, turnDampTime);
+            bulletOrigin.transform.forward = forward;
             
-            Debug.DrawRay(transform.position, transform.forward, Color.green);
+            //Debug.DrawRay(transform.position, transform.forward, Color.green);
             
             #endregion
 
@@ -84,6 +105,22 @@ namespace Player
             tiltSource.localRotation = Quaternion.Slerp(tiltSource.localRotation, goal, tiltLerpSpeed * Time.deltaTime);
             moveForwardSource.forward = Vector3.SmoothDamp(moveForwardSource.forward, new Vector3(move.x, 0, move.y),
                 ref _fDamp, turnDampTime);
+
+            #endregion
+
+            #region Laser
+
+            _lookLaser.SetPosition(0, bulletSource.position);
+            _lookLaser.SetPosition(1, bulletSource.position + (bulletSource.forward * 50));
+            
+            RaycastHit hitLaser;
+            if (Physics.Raycast(bulletSource.position, bulletSource.forward, out hitLaser, Mathf.Infinity))
+            {
+                if (!hitLaser.transform.CompareTag("Bullet"))
+                {
+                    _lookLaser.SetPosition(1, hitLaser.point);
+                }
+            }
 
             #endregion
         }
