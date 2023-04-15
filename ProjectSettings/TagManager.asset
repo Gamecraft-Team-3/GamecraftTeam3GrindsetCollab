@@ -4,7 +4,10 @@
 TagManager:
   serializedVersion: 2
   tags:
+  - Laser
+  - Wall
   - Enemy
+  - Bullet
   layers:
   - Default
   - TransparentFX
