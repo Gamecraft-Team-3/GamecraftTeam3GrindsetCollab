@@ -136,7 +136,7 @@ GameObject:
   - component: {fileID: 731087}
   - component: {fileID: 731086}
   m_Layer: 0
-  m_Name: Player
+  m_Name: PlayerDude
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -581,11 +581,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 397123a2f81db6c41bcf50707f749052, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 731085}
-  enemySpawnPoints: []
-  spawnPointParent: {fileID: 1286678338}
   enemyObject: {fileID: 6223326296074106923, guid: 4471d08a6fa6c094da66ef5b72a0f0c8,
     type: 3}
+  player: {fileID: 731085}
+  spawnPointParent: {fileID: 1286678338}
   enemySpawningTimer: 1
 --- !u!4 &268324726
 Transform:
