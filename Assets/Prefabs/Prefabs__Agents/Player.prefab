@@ -133,7 +133,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4028eaa5f9de980418c5a0cc2c042e84, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletPrefab: {fileID: 2083112953480940559, guid: 5072c3e2e371f7842adbe356accaea26,
+  bulletPrefab: {fileID: 2083112953480940559, guid: 541c97aab951d5245a0ccbe0ac280949,
     type: 3}
   meshTransform: {fileID: 9025689508316736002}
   canShoot: 1
@@ -165,6 +165,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   score: 0
+  health: 0
+  maxHealth: 0
 --- !u!1 &5823453169296781857
 GameObject:
   m_ObjectHideFlags: 0
