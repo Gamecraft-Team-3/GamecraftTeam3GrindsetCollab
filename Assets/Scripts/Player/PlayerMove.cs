@@ -5,6 +5,9 @@ namespace Player
     [RequireComponent(typeof(Rigidbody))]
     public class PlayerMove : MonoBehaviour
     {
+        [Header("Objects")]
+        [SerializeField] private Transform playerMesh;
+        
         [Header("Components")]
         [SerializeField] private Rigidbody rb;
 
@@ -16,6 +19,7 @@ namespace Player
         [SerializeField] private float playerSpeed;
         [SerializeField] private float playerMoveLerp;
         [SerializeField] private float playerVelocityLerp;
+        [SerializeField] private float playerTurnLerp;
 
         private void Awake()
         {

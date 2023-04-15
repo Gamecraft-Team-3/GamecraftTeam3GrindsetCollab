@@ -35,11 +35,33 @@ public class PlayerInputController : MonoBehaviour
 
     public Vector2 GetMove()
     {
-        return _playerInputActions.Play.Move.ReadValue<Vector2>();
+        Vector2 input = _playerInputActions.Play.Move.ReadValue<Vector2>();
+        
+            
+        if (Mathf.Abs(input.x) < 0.15f)
+            input.x = 0;
+            
+        if (Mathf.Abs(input.y) < 0.15f)
+            input.y = 0;
+
+        return input;
     }
 
     public Vector2 GetRJoystick()
     {
-        return _playerInputActions.Play.RJoystickLook.ReadValue<Vector2>();
+        Vector2 input = _playerInputActions.Play.RJoystickLook.ReadValue<Vector2>();
+            
+        if (Mathf.Abs(input.x) < 0.15f)
+            input.x = 0;
+            
+        if (Mathf.Abs(input.y) < 0.15f)
+            input.y = 0;
+        
+        return input;
+    }
+
+    public bool GetLook()
+    {
+        return _playerInputActions.Play.Look.ReadValue<float>() > 0;
     }
 }
