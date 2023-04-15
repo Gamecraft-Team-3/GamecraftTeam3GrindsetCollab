@@ -864,6 +864,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2879911627430077955, guid: 4471d08a6fa6c094da66ef5b72a0f0c8,
         type: 3}
+      propertyPath: idleTimer
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2879911627430077955, guid: 4471d08a6fa6c094da66ef5b72a0f0c8,
+        type: 3}
       propertyPath: wayPointParent
       value: 
       objectReference: {fileID: 1327695522}
