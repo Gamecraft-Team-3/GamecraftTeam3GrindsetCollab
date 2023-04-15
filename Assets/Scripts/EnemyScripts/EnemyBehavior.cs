@@ -5,13 +5,14 @@ using UnityEngine.AI;
 
 public class EnemyBehavior : MonoBehaviour
 {
-    [SerializeField] private GameObject player, wayPointParent = null;
-    [SerializeField] private float distanceToPlayer;
-    [SerializeField] Animator anim = null;
-    [SerializeField] private NavMeshAgent agent = null;
-    [SerializeField] private List<Vector3> wayPoints = null;
+    [SerializeField] private GameObject wayPointParent = null;
     [SerializeField] private int numWayPointsToPatrol = 0;
+    [SerializeField] private Animator anim = null;
+    [SerializeField] private NavMeshAgent agent = null;
+    private List<Vector3> wayPoints = null;
     private EnemyManager enemyManager = null;
+    private GameObject player = null;
+    private float distanceToPlayer;
     // Start is called before the first frame update
     void Start()
     {
@@ -56,7 +57,7 @@ public class EnemyBehavior : MonoBehaviour
 
     public Vector3 GetRandomWayPoint()
     {
-        int temp = Random.Range(0, wayPoints.Count);
+        int temp = Random.Range(0, wayPoints.Count - 1);
         return wayPoints[temp];
     }
 

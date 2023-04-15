@@ -4,10 +4,9 @@ using UnityEngine;
 
 public class EnemyManager : MonoBehaviour
 {
-    [SerializeField] private GameObject player;
-    [SerializeField] private List<Vector3> enemySpawnPoints;
-    [SerializeField] private GameObject spawnPointParent, enemyObject;
+    [SerializeField] private GameObject enemyObject, player, spawnPointParent;
     [SerializeField] private float enemySpawningTimer = 0;
+    private List<Vector3> enemySpawnPoints;
     // Start is called before the first frame update
     void Start()
     {
@@ -28,7 +27,11 @@ public class EnemyManager : MonoBehaviour
 
     private void SpawnEnemy()
     {
-        int pos = Random.Range(0, enemySpawnPoints.Count - 1);
+        if(enemySpawnPoints.Count <= 0)
+        {
+            return;
+        }
+        int pos = Random.Range(0, enemySpawnPoints.Count);
         Instantiate(enemyObject, enemySpawnPoints[pos], enemyObject.transform.rotation);
     }
 
