@@ -3,13 +3,7 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags:
-<<<<<<< HEAD
-  - Laser
-  - Wall
-=======
-  - Enemy
->>>>>>> main
+  tags: []
   layers:
   - Default
   - TransparentFX
