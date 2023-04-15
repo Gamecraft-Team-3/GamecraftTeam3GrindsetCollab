@@ -1,10 +1,7 @@
 fileFormatVersion: 2
-<<<<<<<< HEAD:Assets/Materials.meta
-guid: f0e83d247e22cfa409cf0035d5d0d597
-folderAsset: yes
-========
+
 guid: 0d36dcd3e6cc0b845850abe564fbf06d
->>>>>>>> main:Assets/Scenes/EnochTestScene.unity.meta
+
 DefaultImporter:
   externalObjects: {}
   userData: 
