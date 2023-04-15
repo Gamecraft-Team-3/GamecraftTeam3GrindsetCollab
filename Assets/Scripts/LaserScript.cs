@@ -1,3 +1,4 @@
+using Player;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,6 +11,8 @@ public class LaserScript : MonoBehaviour
     [SerializeField] private float refractAngle = 15;
     [SerializeField] private Collider collider;
     [SerializeField] private float colliderDelay = 0.05f;
+    [SerializeField] private int scoreForKill = 100;
+    [SerializeField] private float scoreMultiplier = 1;
     private Vector3 direction;
     private Rigidbody body;
 
@@ -29,20 +32,29 @@ public class LaserScript : MonoBehaviour
     {
         if (collision.gameObject.tag == "Wall")
         {
+            scoreMultiplier += 1;
             ShootInDirection(Vector3.Reflect(direction, collision.contacts[0].normal));
             if (bounceCount > 0) { bounceCount--; }
             else { Destroy(gameObject); }
         }
         else if (collision.gameObject.tag == "Glass")
         {
+            scoreMultiplier += 1;
             Debug.Log("Refract");
             Refract();
         }
         else if (collision.gameObject.tag == "Enemy")
         {
+            scoreMultiplier *= 2;
             Debug.Log("Enemy Collision");
             Destroy(collision.gameObject);
+            GetComponent<PlayerManager>().AddScore(scoreForKill, scoreMultiplier);
             Refract();
+        }
+        else if (collision.gameObject.tag == "Player")
+        {
+            GetComponent<PlayerManager>().Damage(1);
+            Destroy(gameObject);
         }
 
     }
