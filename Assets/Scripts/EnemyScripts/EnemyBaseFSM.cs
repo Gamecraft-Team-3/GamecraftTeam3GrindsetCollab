@@ -15,7 +15,6 @@ public class EnemyBaseFSM : StateMachineBehaviour
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         distance = animator.GetFloat("DistanceFromPlayer");
-        Debug.Log(distance);
         enemyBehavior = animator.gameObject.GetComponent<EnemyBehavior>();
         wayPoints = enemyBehavior.GetWayPoints();
         agent = enemyBehavior.GetAgent();

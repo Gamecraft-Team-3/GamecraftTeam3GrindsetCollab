@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class EnemyManager : MonoBehaviour
 {
-    [SerializeField] private GameObject enemyObject, player, spawnPointParent;
+    [SerializeField] private GameObject enemyObject, player, spawnPointParent = null;
     [SerializeField] private float enemySpawningTimer = 0;
     [SerializeField] private int maxEnemies = 0;
-    private List<GameObject> currentEnemies;
+    private List<GameObject> currentEnemies = new List<GameObject>();
     private List<Vector3> enemySpawnPoints = new List<Vector3>();
     // Start is called before the first frame update
     void Start()
