@@ -274,10 +274,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2083112953480940556}
-  - component: {fileID: 1529677570608192186}
-  - component: {fileID: 272288042014519143}
+  - component: {fileID: 6385450581970498949}
   m_Layer: 0
-  m_Name: LaserX
+  m_Name: TestBullet
   m_TagString: Bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -299,7 +298,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1529677570608192186
+--- !u!114 &6385450581970498949
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -308,30 +307,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 2083112953480940559}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4de6475a59a529444a984e7d2ca25353, type: 3}
+  m_Script: {fileID: 11500000, guid: 652662106dced9f48b0bbf918506607a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  travelSpeed: 50
-  bounceCount: 3
-  clone: {fileID: 2083112953480940556}
-  refractAngle: 15
-  collider: {fileID: 2083112953562666623}
---- !u!54 &272288042014519143
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2083112953480940559}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 1
+  speed: 25
 --- !u!1 &2083112953562666592
 GameObject:
   m_ObjectHideFlags: 0
@@ -425,7 +404,7 @@ SphereCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2083112953562666592}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5
