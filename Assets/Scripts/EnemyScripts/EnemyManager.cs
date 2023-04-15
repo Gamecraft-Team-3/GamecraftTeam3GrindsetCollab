@@ -50,12 +50,12 @@ public class EnemyManager : MonoBehaviour
 
     private IEnumerator EnemySeperationTimer()
     {
-/*        yield return new WaitForSeconds(0.5f);
-*/        while(currentEnemies.Count < maxEnemies)
+        while(currentEnemies.Count < maxEnemies)
         {
             yield return new WaitForSeconds(enemySpawningTimer);
             SpawnEnemy();
         }
+        yield return new WaitForSeconds(0.5f);
         StartCoroutine(EnemySeperationTimer());
     }
     #endregion
