@@ -150,6 +150,8 @@ MonoBehaviour:
   numWayPointsToPatrol: 4
   anim: {fileID: 201985788635746888}
   agent: {fileID: 1755020596622338969}
+  wayPointParent: {fileID: 0}
+  idleTimer: 1.5
 --- !u!95 &201985788635746888
 Animator:
   serializedVersion: 5

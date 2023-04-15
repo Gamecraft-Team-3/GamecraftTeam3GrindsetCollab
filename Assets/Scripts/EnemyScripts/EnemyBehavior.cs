@@ -8,11 +8,13 @@ public class EnemyBehavior : MonoBehaviour
     [SerializeField] private int numWayPointsToPatrol = 0;
     [SerializeField] private Animator anim = null;
     [SerializeField] private NavMeshAgent agent = null;
-    [SerializeField] public GameObject wayPointParent = null;
+    private GameObject wayPointParent = null;
+    [SerializeField] private float idleTimer = 0;
     private List<Vector3> wayPoints = new List<Vector3>();
-    [SerializeField] private EnemyManager enemyManager = null;
+    private EnemyManager enemyManager = null;
     private GameObject player = null;
     private float distanceToPlayer = 100;
+    private bool shouldMove = true;
     // Start is called before the first frame update
     void Start()
     {
@@ -34,7 +36,23 @@ public class EnemyBehavior : MonoBehaviour
         wayPointParent = GameObject.Find("WayPointList");
         player = enemyManager.GetPlayer();
     }
+
+    public void StartShouldMoveTimer()
+    {
+        StartCoroutine(MoveTimer());
+    }
+
+    private IEnumerator MoveTimer()
+    {
+        yield return new WaitForSeconds(idleTimer);
+        SetShouldMove(true);
+    }
     #region Getter Functions
+    public bool GetShouldMove()
+    {
+        return shouldMove;
+    }
+
     //Returns the distacne from the player
     public float GetPlayerDistance()
     {
@@ -72,6 +90,11 @@ public class EnemyBehavior : MonoBehaviour
     #endregion
 
     #region Mutator Functions
+    public void SetShouldMove(bool answer)
+    {
+        shouldMove = answer;
+    }
+
     private void SetWayPoints()
     {
         for(int i = 0; i < numWayPointsToPatrol; i ++)
