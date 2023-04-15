@@ -76,7 +76,7 @@ TrailRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Time: 5
+  m_Time: 1
   m_Parameters:
     serializedVersion: 3
     widthMultiplier: 1
@@ -316,7 +316,7 @@ MonoBehaviour:
   bounceCount: 3
   clone: {fileID: 2083112953480940556}
   refractAngle: 15
-  collider: {fileID: 0}
+  collider: {fileID: 4097323618171857134}
   colliderDelay: 0.05
 --- !u!54 &5518796705945472717
 Rigidbody:

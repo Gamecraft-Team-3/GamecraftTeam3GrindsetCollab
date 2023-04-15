@@ -1,4 +1,5 @@
 using System;
+using Unity.Mathematics;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Rendering;
@@ -9,7 +10,7 @@ namespace Player
     {
         [Header("Objects")]
         [SerializeField] private Camera camera;
-        [SerializeField] private Transform tiltSource, moveForwardSource;
+        [SerializeField] private Transform tiltSource, moveForwardSource, roombaMesh;
         [SerializeField] private Transform bulletOrigin, bulletSource;
 
         [Header("Fields")] 
@@ -26,7 +27,6 @@ namespace Player
         private Vector3 _vecDamp, _fDamp;
         private bool _doMouseCheck;
         private Vector2 _prevMouse;
-        private Vector2 _smoothMove;
         private LineRenderer _lookLaser;
         private Vector2 _look;
 
@@ -102,9 +102,16 @@ namespace Player
             #region Tilt
             
             Quaternion goal = Quaternion.Euler(new Vector3(!move.Equals(Vector2.zero) ? tiltDegrees : 0, 0, 0));
-            tiltSource.localRotation = Quaternion.Slerp(tiltSource.localRotation, goal, tiltLerpSpeed * Time.deltaTime);
+            //tiltSource.localRotation = Quaternion.Slerp(tiltSource.localRotation, goal, tiltLerpSpeed * Time.deltaTime);
+            // tiltSource.up = Vector3.Slerp(tiltSource.up, new Vector3(move.x, 3f, move.y),
+            //     tiltLerpSpeed * Time.deltaTime);
             moveForwardSource.forward = Vector3.SmoothDamp(moveForwardSource.forward, new Vector3(move.x, 0, move.y),
                 ref _fDamp, turnDampTime);
+            //roombaMesh.localRotation = Quaternion.Euler(tiltSource.localEulerAngles.x, roombaMesh.localEulerAngles.y, tiltSource.localEulerAngles.z);
+
+            roombaMesh.localRotation = Quaternion.Slerp(roombaMesh.localRotation,
+                Quaternion.Euler(new Vector3(move.x * tiltDegrees, 90, move.y * tiltDegrees)),
+                tiltLerpSpeed * Time.deltaTime);
 
             #endregion
 
@@ -116,7 +123,7 @@ namespace Player
             RaycastHit hitLaser;
             if (Physics.Raycast(bulletSource.position, bulletSource.forward, out hitLaser, Mathf.Infinity))
             {
-                if (!hitLaser.transform.CompareTag("Bullet"))
+                if (!hitLaser.transform.CompareTag("Laser"))
                 {
                     _lookLaser.SetPosition(1, hitLaser.point);
                 }
