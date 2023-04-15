@@ -31,13 +31,13 @@ namespace Player
         {
             moveInput = PlayerInputController.Instance.GetMove().normalized;
         
-            Vector3 moveTemp = moveInput * (playerSpeed * Time.deltaTime);
+            Vector3 moveTemp = moveInput * (playerSpeed);
             move = Vector3.Lerp(move, moveTemp, playerMoveLerp * Time.deltaTime);
         }
 
         private void FixedUpdate()
         {
-            Vector3 tempVelocity = new Vector3(move.x, 0, move.y) * 500;
+            Vector3 tempVelocity = new Vector3(move.x, 0, move.y) * (500 * Time.fixedDeltaTime);
             rb.velocity = Vector3.Lerp(rb.velocity, tempVelocity, playerVelocityLerp * Time.fixedDeltaTime);
         }
     }
