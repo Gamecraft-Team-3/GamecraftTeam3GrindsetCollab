@@ -9,7 +9,7 @@ public class LaserScript : MonoBehaviour
     [SerializeField] private Transform clone;
     [SerializeField] private float refractAngle = 15;
     [SerializeField] private Collider collider;
-    private float colliderDelay = 0.1f;
+    [SerializeField] private float colliderDelay = 0.05f;
     private Vector3 direction;
     private Rigidbody body;
 
