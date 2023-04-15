@@ -147,13 +147,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aea9424413d397f47beb0d70a56cbd7d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
-  wayPointParent: {fileID: 0}
-  distanceToPlayer: 0
+  numWayPointsToPatrol: 4
   anim: {fileID: 201985788635746888}
   agent: {fileID: 1755020596622338969}
-  wayPoints: []
-  numWayPointsToPatrol: 0
 --- !u!95 &201985788635746888
 Animator:
   serializedVersion: 5
