@@ -17,6 +17,11 @@ public class EnemyBehavior : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
+    }
+
+    private void Awake()
+    {
         GetInitialStuff();
         SetWayPoints();
     }
@@ -72,11 +77,11 @@ public class EnemyBehavior : MonoBehaviour
 
     public Vector3 GetRandomWayPoint()
     {
-       if(wayPoints.Count == 0)
+/*       if(wayPoints.Count == 0)
         {
             return new Vector3(0, 0, 0);
-        }
-        int temp = Random.Range(0, wayPoints.Count);
+        }*/
+        int temp = Random.Range(0, wayPoints.Count - 1);
         return wayPoints[temp];
     }
 
