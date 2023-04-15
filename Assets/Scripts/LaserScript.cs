@@ -16,6 +16,7 @@ public class LaserScript : MonoBehaviour
     private void Start()
     {
         Setup(transform.forward);
+        Destroy(gameObject, 5.0f);
     }
 
     public void Setup(Vector3 direction)
