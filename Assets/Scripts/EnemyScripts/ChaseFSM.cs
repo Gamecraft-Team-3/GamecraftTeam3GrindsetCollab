@@ -7,7 +7,6 @@ public class ChaseFSM : EnemyBaseFSM
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        Debug.Log("GET OVER HERE!");
         enemyBehavior = animator.gameObject.GetComponent<EnemyBehavior>();
         player = enemyBehavior.GetPlayer();
     }

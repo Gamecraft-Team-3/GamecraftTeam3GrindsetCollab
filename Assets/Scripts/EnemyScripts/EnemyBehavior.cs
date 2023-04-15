@@ -19,8 +19,6 @@ public class EnemyBehavior : MonoBehaviour
     {
         GetInitialStuff();
         SetWayPoints();
-
-        Debug.Log("I am here");
     }
 
     // Update is called once per frame
@@ -74,9 +72,8 @@ public class EnemyBehavior : MonoBehaviour
 
     public Vector3 GetRandomWayPoint()
     {
-        if(wayPoints.Count == 0)
+       if(wayPoints.Count == 0)
         {
-            Debug.Log("I have no Waypoints");
             return new Vector3(0, 0, 0);
         }
         int temp = Random.Range(0, wayPoints.Count);
