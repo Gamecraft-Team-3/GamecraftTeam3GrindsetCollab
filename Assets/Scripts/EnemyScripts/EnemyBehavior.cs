@@ -6,14 +6,18 @@ using UnityEngine.AI;
 public class EnemyBehavior : MonoBehaviour
 {
     [SerializeField] private GameObject player, wayPointParent = null;
-    [SerializeField] private float speed, distanceToPlayer;
+    [SerializeField] private float distanceToPlayer;
     [SerializeField] Animator anim = null;
     [SerializeField] private NavMeshAgent agent = null;
     [SerializeField] private List<Vector3> wayPoints = null;
+    [SerializeField] private int numWayPointsToPatrol = 0;
+    private EnemyManager enemyManager = null;
     // Start is called before the first frame update
     void Start()
     {
         SetWayPoints();
+        enemyManager = GameObject.Find("EnemyManager").GetComponent<EnemyManager>();
+        player = enemyManager.GetPlayer();
     }
 
     // Update is called once per frame
@@ -26,6 +30,15 @@ public class EnemyBehavior : MonoBehaviour
     //Returns the distacne from the player
     public float GetPlayerDistance()
     {
+        #region Calculations
+        float xOne = player.transform.position.x;
+        float xTwo = this.transform.position.x;
+        float yOne = player.transform.position.y;
+        float yTwo = player.transform.position.y;
+        float a = Mathf.Abs((xOne - xTwo) * (xOne - xTwo));
+        float b = Mathf.Abs((yOne - yTwo) * (yOne - yTwo));
+        #endregion
+        distanceToPlayer = Mathf.Sqrt(a + b);
         return distanceToPlayer;
     }
 
@@ -43,24 +56,34 @@ public class EnemyBehavior : MonoBehaviour
 
     public Vector3 GetRandomWayPoint()
     {
-        int temp = (int) Random.Range(0, wayPoints.Count);
+        int temp = Random.Range(0, wayPoints.Count);
         return wayPoints[temp];
+    }
+
+    public GameObject GetPlayer()
+    {
+        return player;
     }
     #endregion
 
     #region Mutator Functions
     private void SetWayPoints()
     {
-        for(int i = 0; i < wayPointParent.transform.childCount; i ++)
+        for(int i = 0; i < numWayPointsToPatrol; i ++)
         {
-            Debug.Log("Got One");
-            wayPoints.Add(wayPointParent.transform.GetChild(i).position);
+            int pos = wayPointParent.transform.GetChild(Random.Range(0, wayPointParent.transform.childCount - 1)).GetSiblingIndex();
+            wayPoints.Add(wayPointParent.transform.GetChild(pos).position);
         }
     }
 
     public void SetEnemyDestination(Vector3 destination)
     {
         agent.SetDestination(destination);
+    }
+
+    public void ClearEnemyDestination()
+    {
+        agent.ResetPath();
     }
     #endregion
 }
