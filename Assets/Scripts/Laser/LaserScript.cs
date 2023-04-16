@@ -31,59 +31,30 @@ public class LaserScript : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag == "Wall")
+        if (collision.gameObject.CompareTag("Wall"))
         {
             scoreMultiplier += 1;
             ShootInDirection(Vector3.Reflect(direction, collision.contacts[0].normal));
             if (bounceCount > 0) { bounceCount--; }
             else { Destroy(gameObject); }
         }
-        else if (collision.gameObject.tag == "Glass")
+        else if (collision.gameObject.CompareTag("Glass"))
         {
             scoreMultiplier += 1;
             Debug.Log("Refract");
             Refract();
         }
-        else if (collision.gameObject.tag == "Enemy")
+        else if (collision.gameObject.CompareTag("Enemy"))
         {
             scoreMultiplier *= 2;
             Debug.Log("Enemy Collision");
             Destroy(collision.gameObject);
-            GetComponent<PlayerManager>().AddScore(scoreForKill, scoreMultiplier);
+            
+            GameObject.FindWithTag("Player").GetComponent<PlayerManager>().AddScore(5, scoreMultiplier);
+                
             Refract();
         }
-        else if (collision.gameObject.tag == "Player")
-        {
-            collision.gameObject.GetComponent<PlayerManager>().Damage(1);
-            Destroy(gameObject);
-        }
-
     }
-
-    //private void OnTriggerEnter(Collider other)
-    //{
-    //    if (other.gameObject.tag == "Wall")
-    //    {
-    //        Debug.Log("bounce");
-    //        var collisionPoint = other.ClosestPoint(transform.position);
-    //        var collisionNormal = transform.position - collisionPoint;
-    //        ShootInDirection(Vector3.Reflect(direction, collisionNormal));
-    //        if (bounceCount > 0) { bounceCount--; }
-    //        else { Destroy(gameObject); }
-    //    }
-    //    if (other.gameObject.tag == "Glass")
-    //    {
-    //        Debug.Log("refract");
-    //        Transform refraction1 = Instantiate(clone, transform.position, transform.rotation);
-    //        Transform refraction2 = Instantiate(clone, transform.position, transform.rotation);
-    //        refraction1.GetComponent<LaserScript>().collider.enabled = false;
-    //        refraction2.GetComponent<LaserScript>().collider.enabled = false;
-    //        refraction1.GetComponent<LaserScript>().StartCoroutine(EnableColliderAfterDelay(colliderDelay));
-    //        refraction2.GetComponent<LaserScript>().StartCoroutine(EnableColliderAfterDelay(colliderDelay));
-    //        refraction1.Rotate(0, refractAngle, 0);
-    //        refraction2.Rotate(0, -refractAngle, 0);
-    //    }
-    //}
 
     private void ShootInDirection(Vector3 newDirection)
     {
