@@ -12,20 +12,24 @@ public class HealthbarScript : MonoBehaviour
 
     public void UpdateHealth(int health)
     {
+        /*Debug.Log("HIT");
         switch(health)
         {
             case 2:
                 {
                     heart3.sprite = heartDead;
+                    break;
                 }
             case 1:
                 {
                     heart2.sprite = heartDead;
+                    break;
                 }
-            case 0:
+            default:
                 {
                     heart1.sprite = heartDead;
+                    break;
                 }
-        }
+        }*/
     }
 }

@@ -42,8 +42,8 @@ namespace Player
 
             if (health == 0)
                 Debug.Log("Player Died");
-
             healthbar.UpdateHealth(health);
+            Debug.Log("HIT!!!!!!!");
         }
 
         public int GetHealthPercentage()

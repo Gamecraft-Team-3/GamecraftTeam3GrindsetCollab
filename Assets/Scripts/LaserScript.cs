@@ -54,7 +54,7 @@ public class LaserScript : MonoBehaviour
         }
         else if (collision.gameObject.tag == "Player")
         {
-            GetComponent<PlayerManager>().Damage(1);
+            collision.gameObject.GetComponent<PlayerManager>().Damage(1);
             Destroy(gameObject);
         }
 
