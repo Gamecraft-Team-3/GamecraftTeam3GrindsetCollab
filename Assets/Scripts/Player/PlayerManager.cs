@@ -14,6 +14,7 @@ namespace Player
         [Header("Values")] 
         [SerializeField] private int score;
         [SerializeField] private int health, maxHealth;
+        [SerializeField] private HealthbarScript healthbar;
         
         private void Awake()
         {
@@ -41,6 +42,8 @@ namespace Player
 
             if (health == 0)
                 Debug.Log("Player Died");
+
+            healthbar.UpdateHealth(health);
         }
 
         public int GetHealthPercentage()
