@@ -6,9 +6,11 @@ public class EnemyManager : MonoBehaviour
 {
     [SerializeField] private GameObject enemyObject, player, spawnPointParent = null;
     [SerializeField] private float enemySpawningTimer = 0;
-    [SerializeField] private int maxEnemies = 0;
+    [SerializeField] private int maxEnemies, waveIncreaseAmount = 0;
     private List<GameObject> currentEnemies = new List<GameObject>();
     private List<Vector3> enemySpawnPoints = new List<Vector3>();
+    private int waveNumber = 1;
+    private int enemiesKilled = 0;
     // Start is called before the first frame update
     void Start()
     {
@@ -21,12 +23,20 @@ public class EnemyManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if(currentEnemies.Count == 0 && enemiesKilled >= maxEnemies)
+        {
+            StartSpawning();
+            enemiesKilled = 0;
+            maxEnemies += waveIncreaseAmount;
+            waveNumber++;
+            maxEnemies = maxEnemies * waveNumber;
+        }
     }
 
     public void DestroyEnemy(GameObject enemyToDestroy)
     {
         currentEnemies.Remove(enemyToDestroy);
+        enemiesKilled++;
         Destroy(enemyToDestroy);
     }
 
@@ -50,13 +60,13 @@ public class EnemyManager : MonoBehaviour
 
     private IEnumerator EnemySeperationTimer()
     {
-        while(currentEnemies.Count < maxEnemies)
+        for(int i = 0; i < maxEnemies; i ++)
         {
             yield return new WaitForSeconds(enemySpawningTimer);
             SpawnEnemy();
         }
         yield return new WaitForSeconds(0.5f);
-        StartCoroutine(EnemySeperationTimer());
+        //StartCoroutine(EnemySeperationTimer());
     }
     #endregion
     #region Getter Functions

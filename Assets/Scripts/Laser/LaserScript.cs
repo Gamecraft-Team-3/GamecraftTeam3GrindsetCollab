@@ -54,7 +54,7 @@ public class LaserScript : MonoBehaviour
         {
             scoreMultiplier *= 2;
             Debug.Log("Enemy Collision");
-            Destroy(collision.gameObject);
+            collision.gameObject.GetComponent<EnemyBehavior>().DestroySelf();
             
             PlayerManager.Instance.AddScore(scoreForKill, scoreMultiplier);
                 
