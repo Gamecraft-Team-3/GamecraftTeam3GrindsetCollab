@@ -47,5 +47,5 @@ MonoBehaviour:
   heart1: {fileID: 0}
   heart2: {fileID: 0}
   heart3: {fileID: 0}
-  heartAlive: {fileID: 21300000, guid: 9fa668daa57774d45b2dc5da683f311b, type: 3}
-  heartDead: {fileID: 21300000, guid: 233b0a61ead9b0949a554ebc31720f35, type: 3}
+  heartAlive: {fileID: 21300000, guid: ffb94d6946ec7bb44a477f21567e221a, type: 3}
+  heartDead: {fileID: 21300000, guid: e89851aad787f3a46ab2eefd77bdf438, type: 3}
