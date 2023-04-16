@@ -74,6 +74,7 @@ namespace Player
 
             if (health == 0)
             {
+                PlayerPrefs.SetInt("Score", score);
                 SceneManager.LoadScene("DeathScreen");
             }
 

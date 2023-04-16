@@ -16,12 +16,12 @@ namespace Misc
 
         private void Update()
         {
-            if (_lengthTimer < 1f)
+            if (_lengthTimer < 1.5f)
                 _lengthTimer += Time.deltaTime / _length;
             else
-                _lengthTimer = 1f;
+                _lengthTimer = 1.5f;
             
-            Color newAlpha = new Color(_line.startColor.r, _line.startColor.g, _line.startColor.b, (1f - _lengthTimer / 1.0f));
+            Color newAlpha = new Color(_line.startColor.r, _line.startColor.g, _line.startColor.b, (1.5f - _lengthTimer / 1.5f));
             _line.startColor = newAlpha;
             _line.endColor = newAlpha;
         }
