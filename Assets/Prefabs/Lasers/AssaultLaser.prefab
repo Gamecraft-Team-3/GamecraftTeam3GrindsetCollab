@@ -379,8 +379,12 @@ MonoBehaviour:
   colliderDelay: 0.05
   bounceCount: 2
   scoreForKill: 100
+  ricochet: {fileID: 8300000, guid: 9be1959103fc4d34f9d0cb1f18a1979f, type: 3}
   collider: {fileID: 4097323618171857134}
   clone: {fileID: 2083112953480940556}
+  source: {fileID: 0}
+  audioSourceObject: {fileID: 7082787811544957409, guid: 06995165246791244ba3a6ccc98b67c3,
+    type: 3}
 --- !u!54 &5518796705945472717
 Rigidbody:
   m_ObjectHideFlags: 0

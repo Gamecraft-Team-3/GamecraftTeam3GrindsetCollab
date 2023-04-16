@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -18,16 +19,26 @@ namespace Player
         [SerializeField] private int health, maxHealth;
         [SerializeField] private HealthbarScript healthbar;
         [SerializeField] private ScoreScript scoreUI;
+        [SerializeField] private TextMeshProUGUI scoreMultiplierText;
+
+        [Header("Values")] 
+        [SerializeField] private float scoreAlphaSpeed;
 
         [Header("Objects")] 
         [SerializeField] private GameObject audioPlayer;
 
         [Header("Audio Clips")] 
         [SerializeField] private List<AudioClip> scoreAudioClips;
+        [SerializeField] private AudioClip hitAudio;
 
         private void Awake()
         {
             Instance = this;
+        }
+
+        private void Update()
+        {
+            scoreMultiplierText.alpha = Mathf.Lerp(scoreMultiplierText.alpha, 0, scoreAlphaSpeed * Time.deltaTime);
         }
 
         public void AddScore(int scoreToAdd, int multiplier)
@@ -43,6 +54,10 @@ namespace Player
             source.clip = scoreAudioClips[multiplier];
             source.enabled = true;
             source.Play();
+
+            scoreMultiplierText.text = $"+{scoreToAdd} x{multiplier}";
+            scoreMultiplierText.alpha = 1.0f;
+            
         }
 
         public int GetScore()
@@ -63,6 +78,15 @@ namespace Player
             }
 
             healthbar.UpdateHealth(health);
+            
+            GameObject audioInstance = Instantiate(audioPlayer);
+            AudioSource source = audioInstance.GetComponent<AudioSource>();
+
+            source.clip = hitAudio;
+            source.volume = 0.1f;
+            source.enabled = true;
+            source.Play();
+
         }
 
         public int GetHealthPercentage()
