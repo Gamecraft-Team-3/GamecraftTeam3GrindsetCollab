@@ -84,8 +84,8 @@ TrailRenderer:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
-        time: 0
-        value: 0.46640968
+        time: 0.0064516068
+        value: 0.63863844
         inSlope: 0
         outSlope: 0
         tangentMode: 0
@@ -93,8 +93,8 @@ TrailRenderer:
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
-        time: 0.10843374
-        value: 0.48404256
+        time: 0.114885345
+        value: 0.6864877
         inSlope: 0
         outSlope: 0
         tangentMode: 0
@@ -102,8 +102,8 @@ TrailRenderer:
         inWeight: 0
         outWeight: 0
       - serializedVersion: 3
-        time: 0.17583089
-        value: 0.5171966
+        time: 0.18228249
+        value: 0.7764559
         inSlope: 0
         outSlope: 0
         tangentMode: 0
@@ -111,8 +111,8 @@ TrailRenderer:
         inWeight: 0
         outWeight: 0
       - serializedVersion: 3
-        time: 0.24721748
-        value: 0.48661903
+        time: 0.25366908
+        value: 0.6934793
         inSlope: 0
         outSlope: 0
         tangentMode: 0
@@ -120,8 +120,8 @@ TrailRenderer:
         inWeight: 0
         outWeight: 0
       - serializedVersion: 3
-        time: 0.35689342
-        value: 0.5014405
+        time: 0.36334503
+        value: 0.73369956
         inSlope: 0
         outSlope: 0
         tangentMode: 0
@@ -129,8 +129,8 @@ TrailRenderer:
         inWeight: 0
         outWeight: 0
       - serializedVersion: 3
-        time: 0.41697577
-        value: 0.4811411
+        time: 0.42342737
+        value: 0.67861414
         inSlope: 0
         outSlope: 0
         tangentMode: 0
@@ -138,8 +138,8 @@ TrailRenderer:
         inWeight: 0
         outWeight: 0
       - serializedVersion: 3
-        time: 0.48815632
-        value: 0.5129591
+        time: 0.49460793
+        value: 0.76495683
         inSlope: 0
         outSlope: 0
         tangentMode: 0
@@ -147,8 +147,8 @@ TrailRenderer:
         inWeight: 0
         outWeight: 0
       - serializedVersion: 3
-        time: 0.56156963
-        value: 0.49395168
+        time: 0.56802124
+        value: 0.7133775
         inSlope: 0
         outSlope: 0
         tangentMode: 0
@@ -156,8 +156,17 @@ TrailRenderer:
         inWeight: 0
         outWeight: 0
       - serializedVersion: 3
-        time: 0.6473513
-        value: 0.4891161
+        time: 0.65380293
+        value: 0.7002555
+        inSlope: 0.20546092
+        outSlope: 0.20546092
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 1
+        outWeight: 0
+      - serializedVersion: 3
+        time: 0.7230365
+        value: 0.6239655
         inSlope: 0
         outSlope: 0
         tangentMode: 0
@@ -165,8 +174,8 @@ TrailRenderer:
         inWeight: 0
         outWeight: 0
       - serializedVersion: 3
-        time: 0.7165849
-        value: 0.4610026
+        time: 0.7997315
+        value: 0.7367693
         inSlope: 0
         outSlope: 0
         tangentMode: 0
@@ -174,17 +183,8 @@ TrailRenderer:
         inWeight: 0
         outWeight: 0
       - serializedVersion: 3
-        time: 0.7932799
-        value: 0.50257176
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 0.84986544
-        value: 0.47150815
+        time: 0.85631704
+        value: 0.6524738
         inSlope: 0
         outSlope: 0
         tangentMode: 0
@@ -193,7 +193,7 @@ TrailRenderer:
         outWeight: 0
       - serializedVersion: 3
         time: 1
-        value: 0.478603
+        value: 0.6717267
         inSlope: 0
         outSlope: 0
         tangentMode: 0
@@ -205,8 +205,8 @@ TrailRenderer:
       m_RotationOrder: 4
     colorGradient:
       serializedVersion: 2
-      key0: {r: 0.17243624, g: 1, b: 0, a: 1}
-      key1: {r: 0.37104392, g: 1, b: 0, a: 0.5686275}
+      key0: {r: 1, g: 0, b: 0.26940823, a: 1}
+      key1: {r: 1, g: 0.062675364, b: 0, a: 0.5686275}
       key2: {r: 0, g: 0, b: 0, a: 1}
       key3: {r: 0, g: 0, b: 0, a: 0}
       key4: {r: 0, g: 0, b: 0, a: 0}
@@ -278,7 +278,7 @@ GameObject:
   - component: {fileID: 5518796705945472717}
   - component: {fileID: 4097323618171857134}
   m_Layer: 0
-  m_Name: LaserBullet
+  m_Name: SniperLaser
   m_TagString: Laser
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -313,11 +313,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   travelSpeed: 50
-  bounceCount: 3
+  bounceCount: 1
   clone: {fileID: 2083112953480940556}
   refractAngle: 15
   collider: {fileID: 4097323618171857134}
   colliderDelay: 0.05
+  scoreForKill: 100
+  scoreMultiplier: 1
 --- !u!54 &5518796705945472717
 Rigidbody:
   m_ObjectHideFlags: 0
