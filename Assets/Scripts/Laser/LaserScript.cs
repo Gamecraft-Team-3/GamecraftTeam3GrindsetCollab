@@ -16,13 +16,16 @@ public class LaserScript : MonoBehaviour
     [SerializeField] private float colliderDelay = 0.05f;
     [SerializeField] private int bounceCount = 3;
     [SerializeField] private int scoreForKill = 100;
-
+    [SerializeField] private AudioClip ricochet;
+    
     [Header("Objects")]
     [SerializeField] private Collider collider;
     [SerializeField] private Transform clone;
     [SerializeField] AudioSource source;
     private Vector3 _direction;
     private Rigidbody _body;
+    [SerializeField] private GameObject audioSourceObject;
+    
 
 
 
@@ -46,6 +49,14 @@ public class LaserScript : MonoBehaviour
             ShootInDirection(Vector3.Reflect(_direction, collision.contacts[0].normal));
             if (bounceCount > 0) { bounceCount--; }
             else { Destroy(gameObject); }
+
+            GameObject audioInstance = Instantiate(audioSourceObject);
+            AudioSource sourceAudio = audioInstance.GetComponent<AudioSource>();
+
+            sourceAudio.clip = ricochet;
+            sourceAudio.volume = 0.35f;
+            sourceAudio.enabled = true;
+            sourceAudio.Play();
         }
         else if (collision.gameObject.CompareTag("Glass"))
         {
