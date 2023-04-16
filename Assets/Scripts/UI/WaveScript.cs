@@ -1,6 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
+
 
 public class WaveCounterScript : MonoBehaviour
 {
@@ -8,6 +11,6 @@ public class WaveCounterScript : MonoBehaviour
 
     public void IncrementWaveCounter()
     {
-        waveCounter++;
+        //waveCounter++;
     }
 }
