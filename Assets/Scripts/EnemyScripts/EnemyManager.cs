@@ -7,6 +7,7 @@ public class EnemyManager : MonoBehaviour
     [SerializeField] private GameObject enemyObject, player, spawnPointParent, audioParent = null;
     [SerializeField] private float enemySpawningTimer = 0;
     [SerializeField] private int maxEnemies, waveIncreaseAmount = 0;
+    [SerializeField] private WaveCounterScript waveCounterUI;
     private List<GameObject> currentEnemies = new List<GameObject>();
     private List<Vector3> enemySpawnPoints = new List<Vector3>();
     private int waveNumber = 1;
@@ -44,7 +45,8 @@ public class EnemyManager : MonoBehaviour
 
     private void PlayTheWaveSound(int waveNumber)
     {
-        while(waveNumber > 10)
+        waveCounterUI.SetWaveCounter(waveNumber);
+        while (waveNumber > 10)
         {
             waveNumber -= 10;
         }

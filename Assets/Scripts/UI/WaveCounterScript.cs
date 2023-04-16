@@ -4,12 +4,12 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class WaveScript : MonoBehaviour
+public class WaveCounterScript : MonoBehaviour
 {
-    [SerializeField] private TMP_Text waveCounter;
+    [SerializeField] private TMP_Text waveText;
 
-    public void IncrementWaveCounter()
+    public void SetWaveCounter(int wave)
     {
-        //waveCounter++;
+        waveText.text = wave.ToString();
     }
 }
