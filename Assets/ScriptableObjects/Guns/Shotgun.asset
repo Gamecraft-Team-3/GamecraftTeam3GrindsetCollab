@@ -13,7 +13,9 @@ MonoBehaviour:
   m_Name: Shotgun
   m_EditorClassIdentifier: 
   gunName: 3
-  mesh: {fileID: 3613567641014311022, guid: f349c684459e6c445a99fbf1bd6c3f4f, type: 3}
+  pickupMesh: {fileID: -3556444757932956147, guid: 7d2af2dffe38bb34aa620e6bdbcc386c,
+    type: 3}
+  playerMesh: {fileID: 0}
   laser: {fileID: 2083112953480940559, guid: 44ef5e0486440884da37cbd3ff1fb215, type: 3}
   fireRate: 2
   fullAuto: 1

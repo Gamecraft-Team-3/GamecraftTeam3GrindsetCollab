@@ -13,6 +13,7 @@ namespace Player
         [SerializeField] private Transform tiltSource, moveForwardSource, roombaMesh;
         [SerializeField] private Transform bulletOrigin, bulletSource;
         [SerializeField] private GameObject pointer;
+        [SerializeField] private GameObject pistolPlayer, sniperPlayer, shotgunPlayer, assaultPlayer, random; 
 
         [Header("Components")] 
         [SerializeField] private MeshFilter playerMeshFilter;
@@ -150,7 +151,51 @@ namespace Player
 
             #region Player Mesh
 
-            playerMeshFilter.mesh = playerCombat.GetCurrentGun().playerMesh;
+            switch (playerCombat.GetCurrentGun().gunName)
+            {
+                case GunInfo.GunName.Pistol:
+                    pistolPlayer.SetActive(true);
+                    sniperPlayer.SetActive(false);
+                    shotgunPlayer.SetActive(false);
+                    assaultPlayer.SetActive(false);
+                    random.SetActive(false);
+                    break;
+                case GunInfo.GunName.Assault:
+                    pistolPlayer.SetActive(false);
+                    sniperPlayer.SetActive(false);
+                    shotgunPlayer.SetActive(false);
+                    assaultPlayer.SetActive(true);
+                    random.SetActive(false);
+                    break;
+                case GunInfo.GunName.Shotgun:
+                    pistolPlayer.SetActive(false);
+                    sniperPlayer.SetActive(false);
+                    shotgunPlayer.SetActive(true);
+                    assaultPlayer.SetActive(false);
+                    random.SetActive(false);
+                    break;
+                case    GunInfo.GunName.Sniper:
+                    pistolPlayer.SetActive(false);
+                    sniperPlayer.SetActive(true);
+                    shotgunPlayer.SetActive(false);
+                    assaultPlayer.SetActive(false);
+                    random.SetActive(false);
+                    break;
+                case GunInfo.GunName.Random:
+                    pistolPlayer.SetActive(false);
+                    sniperPlayer.SetActive(false);
+                    shotgunPlayer.SetActive(false);
+                    assaultPlayer.SetActive(true);
+                    random.SetActive(true);
+                    break;
+                default:
+                    pistolPlayer.SetActive(false);
+                    sniperPlayer.SetActive(false);
+                    shotgunPlayer.SetActive(false);
+                    assaultPlayer.SetActive(false);
+                    random.SetActive(true);
+                    break;
+            }
 
             #endregion
         }

@@ -51,8 +51,6 @@ namespace Player
 
         private void Shoot()
         {
-            
-
             if (currentWeapon.doSpread)
             {
                 for (int i = 1; i < currentWeapon.spreadCount + 1; i++)

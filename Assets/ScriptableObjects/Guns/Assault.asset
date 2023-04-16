@@ -13,9 +13,13 @@ MonoBehaviour:
   m_Name: Assault
   m_EditorClassIdentifier: 
   gunName: 2
-  mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+  pickupMesh: {fileID: 3033549754497755919, guid: 8730b4c441a1ff142935d0f2df2e4ca7,
+    type: 3}
+  playerMesh: {fileID: 0}
   laser: {fileID: 2083112953480940559, guid: 81dd907c5f9b69b4aaeeea5c25c65b0f, type: 3}
   fireRate: 0.5
   fullAuto: 1
   ammo: 30
-  bounceCount: 2
+  doSpread: 0
+  spreadCount: 0
+  spreadAngle: 0

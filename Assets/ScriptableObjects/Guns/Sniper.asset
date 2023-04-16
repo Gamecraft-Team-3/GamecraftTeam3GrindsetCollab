@@ -13,9 +13,13 @@ MonoBehaviour:
   m_Name: Sniper
   m_EditorClassIdentifier: 
   gunName: 0
-  mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+  pickupMesh: {fileID: -2436665886259379429, guid: 44d6d65e5bd8a6c40b4ad83110fa06bd,
+    type: 3}
+  playerMesh: {fileID: 0}
   laser: {fileID: 2083112953480940559, guid: 44ef5e0486440884da37cbd3ff1fb215, type: 3}
   fireRate: 3
   fullAuto: 0
   ammo: 10
-  bounceCount: 4
+  doSpread: 0
+  spreadCount: 0
+  spreadAngle: 0

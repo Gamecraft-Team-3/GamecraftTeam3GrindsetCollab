@@ -9,7 +9,8 @@ namespace Player
     {
         [Header("Gun Info")]
         public GunName gunName;
-        public Mesh pickupMesh, playerMesh;
+
+        public Mesh pickupMesh;
         public GameObject laser;
         
         [Header("Fire Mod")]
