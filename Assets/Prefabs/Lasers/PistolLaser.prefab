@@ -265,6 +265,65 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2cd73fb3213c754290196cfa922a7e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &617098665703494806
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1995668905591904526}
+  - component: {fileID: 5007027508943638432}
+  - component: {fileID: 2633221886855769645}
+  m_Layer: 0
+  m_Name: ScoreAddative
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1995668905591904526
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 617098665703494806}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2083112953480940556}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &5007027508943638432
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 617098665703494806}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.5, y: 0.5, z: 0.5}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &2633221886855769645
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 617098665703494806}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7fd0e098bea77904084985d55a4e3fe1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 1
 --- !u!1 &2083112953480940559
 GameObject:
   m_ObjectHideFlags: 0
@@ -277,7 +336,7 @@ GameObject:
   - component: {fileID: -5839043786554319949}
   - component: {fileID: 5518796705945472717}
   - component: {fileID: 4097323618171857134}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PistolLaser
   m_TagString: Laser
   m_Icon: {fileID: 0}
@@ -297,6 +356,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6900635539736211269}
+  - {fileID: 1995668905591904526}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -318,6 +378,8 @@ MonoBehaviour:
   refractAngle: 15
   collider: {fileID: 4097323618171857134}
   colliderDelay: 0.05
+  scoreForKill: 100
+  scoreMultiplier: 1
 --- !u!54 &5518796705945472717
 Rigidbody:
   m_ObjectHideFlags: 0
