@@ -8,8 +8,8 @@ using Random = UnityEngine.Random;
 public class GunPickup : MonoBehaviour
 {
     [Header("Objects")]
-    [SerializeField] private GameObject pickupMesh;
     [SerializeField] private MeshFilter pickupRender;
+    [SerializeField] private MeshRenderer pickupRenderColor;
 
     [Header("Components")]
     [SerializeField] private Collider pickupCollider;
@@ -17,11 +17,20 @@ public class GunPickup : MonoBehaviour
     [Header("Fields")]
     [SerializeField] private List<GunInfo> gunOptions;
     [SerializeField] private float spawnTime;
+    [SerializeField] private float spinSpeed, hoverSpeed, hoverMagnitude;
+    [SerializeField] private Vector3 basePosition;
     private GunInfo _currentGun;
 
     private void Start()
     {
         StartCoroutine(RespawnPickup(0.1f));
+        basePosition = transform.position;
+    }
+
+    private void Update()
+    {
+        transform.Rotate(0, spinSpeed * Time.deltaTime, 0);
+        transform.position = basePosition + new Vector3(0, Mathf.Sin(Time.time * hoverSpeed) * hoverMagnitude, 0);
     }
 
     private void OnTriggerEnter(Collider other)
@@ -36,7 +45,6 @@ public class GunPickup : MonoBehaviour
 
     private IEnumerator RespawnPickup(float time)
     {
-        pickupMesh.SetActive(false);
         pickupCollider.enabled = false;
         pickupRender.gameObject.SetActive(false);
         
@@ -44,6 +52,10 @@ public class GunPickup : MonoBehaviour
         _currentGun = gunOptions[rng];
         
         pickupRender.mesh = _currentGun.pickupMesh;
+        // pickupRenderColor.material = Instantiate(pickupRenderColor.material) as Material;
+        pickupRenderColor.material.SetColor("_Color", _currentGun.color);
+
+        pickupRender.transform.localScale = new Vector3(_currentGun.scale, _currentGun.scale, _currentGun.scale);
         
         if (_currentGun.gunName == GunInfo.GunName.Random)
         {
@@ -52,7 +64,6 @@ public class GunPickup : MonoBehaviour
 
         yield return new WaitForSeconds(time);
         
-        pickupMesh.SetActive(true);
         pickupCollider.enabled = true;
         pickupRender.gameObject.SetActive(true);
 
