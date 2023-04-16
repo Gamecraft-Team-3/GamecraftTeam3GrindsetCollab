@@ -372,14 +372,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4de6475a59a529444a984e7d2ca25353, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  travelSpeed: 50
-  bounceCount: 3
-  clone: {fileID: 2083112953480940556}
-  refractAngle: 15
-  collider: {fileID: 4097323618171857134}
-  colliderDelay: 0.05
-  scoreForKill: 100
   scoreMultiplier: 1
+  refractionCount: 3
+  travelSpeed: 50
+  refractAngle: 15
+  colliderDelay: 0.05
+  bounceCount: 3
+  scoreForKill: 100
+  collider: {fileID: 4097323618171857134}
+  clone: {fileID: 2083112953480940556}
 --- !u!54 &5518796705945472717
 Rigidbody:
   m_ObjectHideFlags: 0
