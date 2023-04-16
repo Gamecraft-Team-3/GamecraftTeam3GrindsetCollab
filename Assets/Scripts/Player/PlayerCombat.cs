@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 
 namespace Player
@@ -77,6 +78,8 @@ namespace Player
 
             canShoot = false;
             StartCoroutine(SetCanShoot(currentWeapon.fireRate));
+            
+            CustomEvent.Trigger(this.gameObject,"PlayerShot");
         }
 
         private IEnumerator SetCanShoot(float time)
@@ -101,11 +104,6 @@ namespace Player
         public GunInfo GetCurrentGun()
         {
             return currentWeapon;
-        }
-
-        public bool CanPlayerFire()
-        {
-            return canShoot;
         }
     }
 }
