@@ -13,9 +13,14 @@ MonoBehaviour:
   m_Name: Pistol
   m_EditorClassIdentifier: 
   gunName: 1
-  mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
+  pickupMesh: {fileID: 460211690999991921, guid: 45fa3e98b7eaac546a935d49fb61f0e7,
+    type: 3}
+  playerMesh: {fileID: -9189416772275766018, guid: b69360e94b9a5814f928da64bad5b448,
+    type: 3}
   laser: {fileID: 2083112953480940559, guid: 541c97aab951d5245a0ccbe0ac280949, type: 3}
   fireRate: 1
   fullAuto: 0
   ammo: 20
-  bounceCount: 3
+  doSpread: 0
+  spreadCount: 0
+  spreadAngle: 0

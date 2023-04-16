@@ -13,7 +13,9 @@ MonoBehaviour:
   m_Name: Random
   m_EditorClassIdentifier: 
   gunName: 4
-  mesh: {fileID: -3867539141892247042, guid: 600513d2e964952489b680ff7d1f717f, type: 3}
+  pickupMesh: {fileID: 3613567641014311022, guid: f349c684459e6c445a99fbf1bd6c3f4f,
+    type: 3}
+  playerMesh: {fileID: 0}
   laser: {fileID: 2083112953480940559, guid: 541c97aab951d5245a0ccbe0ac280949, type: 3}
   fireRate: 0
   fullAuto: 0
