@@ -13,6 +13,8 @@ namespace Player
         public Mesh pickupMesh;
         public GameObject laser;
         public Sprite gunOutline, gunFill;
+        public Color color;
+        public float scale;
         
         [Header("Fire Mod")]
         public float fireRate;

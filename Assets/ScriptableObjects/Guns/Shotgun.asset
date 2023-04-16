@@ -18,6 +18,8 @@ MonoBehaviour:
   laser: {fileID: 2083112953480940559, guid: 44ef5e0486440884da37cbd3ff1fb215, type: 3}
   gunOutline: {fileID: 21300000, guid: 5fa59c5be5f6f2047ad997483a190908, type: 3}
   gunFill: {fileID: 21300000, guid: 56e88e7e5d495d54a8e5badbd267e205, type: 3}
+  color: {r: 1, g: 0.5039347, b: 0, a: 0}
+  scale: 400
   fireRate: 2
   fullAuto: 1
   ammo: 10

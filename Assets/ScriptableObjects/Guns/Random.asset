@@ -18,9 +18,11 @@ MonoBehaviour:
   laser: {fileID: 2083112953480940559, guid: 541c97aab951d5245a0ccbe0ac280949, type: 3}
   gunOutline: {fileID: 21300000, guid: 340b886a3e058ea4ea7d4933cdf4567e, type: 3}
   gunFill: {fileID: 21300000, guid: 3f990da9f91d4fa488dd7666319e1894, type: 3}
-  fireRate: 0
-  fullAuto: 0
-  ammo: 0
-  doSpread: 0
-  spreadCount: 0
-  spreadAngle: 0
+  color: {r: 0.94275045, g: 0, b: 1, a: 0}
+  scale: 0.5
+  fireRate: 2.354443
+  fullAuto: 1
+  ammo: 16
+  doSpread: 1
+  spreadCount: 6
+  spreadAngle: 245.33652
