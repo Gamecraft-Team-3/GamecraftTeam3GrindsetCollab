@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Player
 {
@@ -10,6 +11,10 @@ namespace Player
         [Header("Objects")] 
         [SerializeField] private Transform meshTransform;
         [SerializeField] private AmmoScript ammoScript;
+
+        [Header("Components")] 
+        [SerializeField] private Image gunOutline;
+        [SerializeField] private Image gunFill;
 
         [Header("Values")] 
         [SerializeField] private bool canShoot;
@@ -26,6 +31,9 @@ namespace Player
             currentAmmo = currentWeapon.ammo;
 
             ammoScript.SetAmmo(currentAmmo);
+
+            gunOutline.sprite = currentWeapon.gunOutline;
+            gunFill.sprite = currentWeapon.gunFill;
         }
 
         private void Update()
@@ -37,6 +45,11 @@ namespace Player
 
             if (currentWeapon.fullAuto && canShoot && isShootPressed && currentAmmo > 0)
                 Shoot();
+            
+            gunOutline.sprite = currentWeapon.gunOutline;
+            gunFill.sprite = currentWeapon.gunFill;
+
+            gunFill.fillAmount = GetPlayerFireFill();
         }
 
         private void ShootPressed(object sender, EventArgs e)

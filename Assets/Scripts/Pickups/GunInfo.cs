@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.UI;
 using Random = UnityEngine.Random;
 
 namespace Player
@@ -9,9 +10,9 @@ namespace Player
     {
         [Header("Gun Info")]
         public GunName gunName;
-
         public Mesh pickupMesh;
         public GameObject laser;
+        public Sprite gunOutline, gunFill;
         
         [Header("Fire Mod")]
         public float fireRate;
