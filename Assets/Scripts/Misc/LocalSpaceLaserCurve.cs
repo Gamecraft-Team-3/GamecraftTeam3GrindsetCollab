@@ -30,7 +30,6 @@ namespace Misc
 
         private void AddCurveVertex()
         {
-            Debug.Log("Added Vertex");
             if (_keyIndex >= _keyCount)
                 _keyIndex = 0;
 
