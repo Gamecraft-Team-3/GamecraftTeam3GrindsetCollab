@@ -20,6 +20,8 @@ namespace Player
         {
             PlayerInputController.Instance.OnShootActionPerformed += ShootPressed;
             PlayerInputController.Instance.OnShootActionReleased += ShootReleased;
+
+            currentAmmo = currentWeapon.ammo;
         }
 
         private void Update()
@@ -48,8 +50,24 @@ namespace Player
 
         private void Shoot()
         {
-            GameObject bulletInstance = Instantiate(currentWeapon.laser, meshTransform.position, Quaternion.identity);
-            bulletInstance.transform.forward = meshTransform.forward;
+            
+
+            if (currentWeapon.doSpread)
+            {
+                for (int i = 1; i < currentWeapon.spreadCount + 1; i++)
+                {
+                    float angle = (currentWeapon.spreadAngle / 2) - (currentWeapon.spreadAngle / i);
+                    
+                    GameObject subBulletInstance = Instantiate(currentWeapon.laser, meshTransform.position, Quaternion.identity);
+                    subBulletInstance.transform.forward = meshTransform.forward;
+                    subBulletInstance.transform.Rotate(new Vector3(0, angle, 0));
+                }
+            }
+            else
+            {
+                GameObject bulletInstance = Instantiate(currentWeapon.laser, meshTransform.position, Quaternion.identity);
+                bulletInstance.transform.forward = meshTransform.forward;
+            }
 
             currentAmmo--;
             _fireTime = 0f;
