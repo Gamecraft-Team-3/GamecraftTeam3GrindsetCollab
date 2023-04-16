@@ -151,6 +151,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 73b6e923269c7f54b90c8d252ace6ea6, type: 2}
   - {fileID: 11400000, guid: aeb591fe5055f6d4b94593d575ff753a, type: 2}
   - {fileID: 11400000, guid: 2bebbce138955374b8742454be618f07, type: 2}
+  - {fileID: 11400000, guid: eb6befd1da08f74469f275cd29c26c15, type: 2}
+  - {fileID: 11400000, guid: ac30a1196c1704c4eb48cbe78f64fb58, type: 2}
   spawnTime: 2
 --- !u!65 &3298488253950747091
 BoxCollider:

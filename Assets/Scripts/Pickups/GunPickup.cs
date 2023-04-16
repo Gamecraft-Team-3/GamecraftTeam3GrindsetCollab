@@ -42,8 +42,13 @@ public class GunPickup : MonoBehaviour
         
         int rng = Random.Range(0, gunOptions.Count);
         _currentGun = gunOptions[rng];
-
+        
         pickupRender.mesh = _currentGun.mesh;
+        
+        if (_currentGun.gunName == GunInfo.GunName.Random)
+        {
+            _currentGun.RandomizeWeapon();
+        }
 
         yield return new WaitForSeconds(time);
         
