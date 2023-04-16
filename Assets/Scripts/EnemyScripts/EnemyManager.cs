@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemyManager : MonoBehaviour
 {
-    [SerializeField] private GameObject enemyObject, player, spawnPointParent = null;
+    [SerializeField] private GameObject enemyObject, player, spawnPointParent, audioParent = null;
     [SerializeField] private float enemySpawningTimer = 0;
     [SerializeField] private int maxEnemies, waveIncreaseAmount = 0;
     private List<GameObject> currentEnemies = new List<GameObject>();
@@ -18,6 +18,7 @@ public class EnemyManager : MonoBehaviour
         SetSpawnPoints();
 
         StartSpawning();
+        PlayTheWaveSound(waveNumber);
     }
 
     // Update is called once per frame
@@ -25,11 +26,12 @@ public class EnemyManager : MonoBehaviour
     {
         if(currentEnemies.Count == 0 && enemiesKilled >= maxEnemies)
         {
-            StartSpawning();
             enemiesKilled = 0;
             maxEnemies += waveIncreaseAmount;
             waveNumber++;
             maxEnemies = maxEnemies * waveNumber;
+            StartSpawning();
+            PlayTheWaveSound(waveNumber);
         }
     }
 
@@ -38,6 +40,15 @@ public class EnemyManager : MonoBehaviour
         currentEnemies.Remove(enemyToDestroy);
         enemiesKilled++;
         Destroy(enemyToDestroy);
+    }
+
+    private void PlayTheWaveSound(int waveNumber)
+    {
+        while(waveNumber > 10)
+        {
+            waveNumber -= 10;
+        }
+        audioParent.transform.GetChild(waveNumber).GetComponent<AudioSource>().Play();
     }
 
     #region Enemy Spawning Jazz
