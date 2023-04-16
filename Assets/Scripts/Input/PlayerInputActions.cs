@@ -62,15 +62,6 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""Look"",
-                    ""type"": ""Button"",
-                    ""id"": ""5ea7137b-44ba-4e35-b0d0-82c52dbbb46e"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -154,7 +145,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""f81ccd42-2723-4270-bc96-605f73cbb3bb"",
-                    ""path"": ""<Gamepad>/rightStick"",
+                    ""path"": ""<Joystick>/stick/right"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -183,28 +174,6 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""action"": ""Shoot"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""f3d1d7c3-cdc9-4d7b-94df-866e1ac21362"",
-                    ""path"": ""<Gamepad>/rightStickPress"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Look"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""988b2563-d5da-4dce-a04e-d1fa864e7fdf"",
-                    ""path"": ""<Keyboard>/shift"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Look"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -223,7 +192,6 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         m_Play_Mouse = m_Play.FindAction("Mouse", throwIfNotFound: true);
         m_Play_RJoystickLook = m_Play.FindAction("RJoystickLook", throwIfNotFound: true);
         m_Play_Shoot = m_Play.FindAction("Shoot", throwIfNotFound: true);
-        m_Play_Look = m_Play.FindAction("Look", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -289,7 +257,6 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
     private readonly InputAction m_Play_Mouse;
     private readonly InputAction m_Play_RJoystickLook;
     private readonly InputAction m_Play_Shoot;
-    private readonly InputAction m_Play_Look;
     public struct PlayActions
     {
         private @PlayerInputActions m_Wrapper;
@@ -298,7 +265,6 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         public InputAction @Mouse => m_Wrapper.m_Play_Mouse;
         public InputAction @RJoystickLook => m_Wrapper.m_Play_RJoystickLook;
         public InputAction @Shoot => m_Wrapper.m_Play_Shoot;
-        public InputAction @Look => m_Wrapper.m_Play_Look;
         public InputActionMap Get() { return m_Wrapper.m_Play; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -320,9 +286,6 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
             @Shoot.started += instance.OnShoot;
             @Shoot.performed += instance.OnShoot;
             @Shoot.canceled += instance.OnShoot;
-            @Look.started += instance.OnLook;
-            @Look.performed += instance.OnLook;
-            @Look.canceled += instance.OnLook;
         }
 
         private void UnregisterCallbacks(IPlayActions instance)
@@ -339,9 +302,6 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
             @Shoot.started -= instance.OnShoot;
             @Shoot.performed -= instance.OnShoot;
             @Shoot.canceled -= instance.OnShoot;
-            @Look.started -= instance.OnLook;
-            @Look.performed -= instance.OnLook;
-            @Look.canceled -= instance.OnLook;
         }
 
         public void RemoveCallbacks(IPlayActions instance)
@@ -374,6 +334,5 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         void OnMouse(InputAction.CallbackContext context);
         void OnRJoystickLook(InputAction.CallbackContext context);
         void OnShoot(InputAction.CallbackContext context);
-        void OnLook(InputAction.CallbackContext context);
     }
 }

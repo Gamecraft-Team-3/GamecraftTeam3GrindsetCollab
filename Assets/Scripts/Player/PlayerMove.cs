@@ -5,9 +5,6 @@ namespace Player
     [RequireComponent(typeof(Rigidbody))]
     public class PlayerMove : MonoBehaviour
     {
-        [Header("Objects")]
-        [SerializeField] private Transform playerMesh;
-        
         [Header("Components")]
         [SerializeField] private Rigidbody rb;
 
@@ -19,7 +16,6 @@ namespace Player
         [SerializeField] private float playerSpeed;
         [SerializeField] private float playerMoveLerp;
         [SerializeField] private float playerVelocityLerp;
-        [SerializeField] private float playerTurnLerp;
 
         private void Awake()
         {
@@ -31,13 +27,13 @@ namespace Player
         {
             moveInput = PlayerInputController.Instance.GetMove().normalized;
         
-            Vector3 moveTemp = moveInput * (playerSpeed);
+            Vector3 moveTemp = moveInput * (playerSpeed * Time.deltaTime);
             move = Vector3.Lerp(move, moveTemp, playerMoveLerp * Time.deltaTime);
         }
 
         private void FixedUpdate()
         {
-            Vector3 tempVelocity = new Vector3(move.x, 0, move.y) * (500 * Time.fixedDeltaTime);
+            Vector3 tempVelocity = new Vector3(move.x, 0, move.y) * 500;
             rb.velocity = Vector3.Lerp(rb.velocity, tempVelocity, playerVelocityLerp * Time.fixedDeltaTime);
         }
     }

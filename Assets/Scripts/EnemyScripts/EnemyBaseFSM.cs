@@ -9,23 +9,22 @@ public class EnemyBaseFSM : StateMachineBehaviour
     protected EnemyBehavior enemyBehavior = null;
     protected List<Vector3> wayPoints = null;
     protected NavMeshAgent agent = null;
-    protected GameObject player = null;
     
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         distance = animator.GetFloat("DistanceFromPlayer");
+        Debug.Log(distance);
         enemyBehavior = animator.gameObject.GetComponent<EnemyBehavior>();
         wayPoints = enemyBehavior.GetWayPoints();
         agent = enemyBehavior.GetAgent();
-        player = enemyBehavior.GetPlayer();
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
 
     {
-        distance = enemyBehavior.GetPlayerDistance();
+        //distance = enemyBehavior.GetPlayerDistance();
         animator.SetFloat("DistanceFromPlayer", distance);
     }
 
