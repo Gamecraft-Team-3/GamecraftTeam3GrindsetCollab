@@ -13,6 +13,10 @@ namespace Player
         [SerializeField] private Transform tiltSource, moveForwardSource, roombaMesh;
         [SerializeField] private Transform bulletOrigin, bulletSource;
         [SerializeField] private GameObject pointer;
+
+        [Header("Components")] 
+        [SerializeField] private MeshFilter playerMeshFilter;
+        [SerializeField] private PlayerCombat playerCombat;
         
         [Header("Fields")] 
         [SerializeField] private float rJoyLerpSpeed;
@@ -142,6 +146,12 @@ namespace Player
                 break;
             }
             
+            #endregion
+
+            #region Player Mesh
+
+            playerMeshFilter.mesh = playerCombat.GetCurrentGun().playerMesh;
+
             #endregion
         }
     }

@@ -43,7 +43,7 @@ public class GunPickup : MonoBehaviour
         int rng = Random.Range(0, gunOptions.Count);
         _currentGun = gunOptions[rng];
         
-        pickupRender.mesh = _currentGun.mesh;
+        pickupRender.mesh = _currentGun.pickupMesh;
         
         if (_currentGun.gunName == GunInfo.GunName.Random)
         {
