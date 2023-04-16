@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6218dcd584f6373429643ba7a0a162e6, type: 3}
+  m_Name: Assault
+  m_EditorClassIdentifier: 
+  gunName: 2
+  pickupMesh: {fileID: 3033549754497755919, guid: 8730b4c441a1ff142935d0f2df2e4ca7,
+    type: 3}
+  playerMesh: {fileID: 0}
+  laser: {fileID: 2083112953480940559, guid: 81dd907c5f9b69b4aaeeea5c25c65b0f, type: 3}
+  fireRate: 0.5
+  fullAuto: 1
+  ammo: 30
+  doSpread: 0
+  spreadCount: 0
+  spreadAngle: 0

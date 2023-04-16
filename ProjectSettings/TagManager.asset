@@ -4,6 +4,10 @@
 TagManager:
   serializedVersion: 2
   tags:
+  - Laser
+  - Glass
+  - Bullet
+  - Wall
   - Enemy
   layers:
   - Default
@@ -12,8 +16,8 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
+  - Laser
+  - Player
   - 
   - 
   - 

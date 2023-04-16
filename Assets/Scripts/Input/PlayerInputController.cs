@@ -11,7 +11,8 @@ public class PlayerInputController : MonoBehaviour
 
     private PlayerInputActions _playerInputActions;
 
-    public event EventHandler OnShootAction;
+    public event EventHandler OnShootActionPerformed;
+    public event EventHandler OnShootActionReleased;
     
     private void Awake()
     {
@@ -19,13 +20,19 @@ public class PlayerInputController : MonoBehaviour
         _playerInputActions.Enable();
         
         _playerInputActions.Play.Shoot.performed += OnShootPerformed;
+        _playerInputActions.Play.Shoot.canceled += OnShootReleased;
 
         Instance = this;
     }
 
     private void OnShootPerformed(InputAction.CallbackContext context) 
     {
-        OnShootAction?.Invoke(this, EventArgs.Empty);
+        OnShootActionPerformed?.Invoke(this, EventArgs.Empty);
+    }
+    
+    private void OnShootReleased(InputAction.CallbackContext context) 
+    {
+        OnShootActionReleased?.Invoke(this, EventArgs.Empty);
     }
 
     public Vector2 GetMousePosition()
