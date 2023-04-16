@@ -81,6 +81,12 @@ public class EnemyManager : MonoBehaviour
     }
     #endregion
     #region Getter Functions
+
+    public int GetWaceNumber()
+    {
+        return waveNumber;
+    }
+
     public GameObject GetPlayer()
     {
         return player;
