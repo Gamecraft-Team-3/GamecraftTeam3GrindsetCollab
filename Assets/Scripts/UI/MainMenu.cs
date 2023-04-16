@@ -19,7 +19,7 @@ public class MainMenu : MonoBehaviour
 
     public void Play()
     {
-        SceneManager.LoadScene("OutdoorsScene");
+        SceneManager.LoadScene("Scenes/Scene_Blockout/Blockout_Level");
     }
 
     public void Quit()
