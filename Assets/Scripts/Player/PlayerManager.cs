@@ -15,7 +15,8 @@ namespace Player
         [SerializeField] private int score;
         [SerializeField] private int health, maxHealth;
         [SerializeField] private HealthbarScript healthbar;
-        
+        [SerializeField] private ScoreScript scoreUI;
+
         private void Awake()
         {
             Instance = this;
@@ -24,8 +25,9 @@ namespace Player
         public void AddScore(int scoreToAdd, float multiplier)
         {
             score += Mathf.RoundToInt((float)scoreToAdd * multiplier);
-            
+
             // Hook the multiplier to the Score ui element for effects.
+            scoreUI.SetScore(this.GetScore());
         }
 
         public int GetScore()
@@ -43,7 +45,6 @@ namespace Player
             if (health == 0)
                 Debug.Log("Player Died");
             healthbar.UpdateHealth(health);
-            Debug.Log("HIT!!!!!!!");
         }
 
         public int GetHealthPercentage()

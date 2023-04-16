@@ -8,6 +8,7 @@ namespace Player
     {
         [Header("Objects")] 
         [SerializeField] private Transform meshTransform;
+        [SerializeField] private AmmoScript ammoScript;
 
         [Header("Values")] 
         [SerializeField] private bool canShoot;
@@ -70,6 +71,7 @@ namespace Player
             }
 
             currentAmmo--;
+            ammoScript.SetAmmo(currentAmmo);
             _fireTime = 0f;
 
             canShoot = false;
@@ -87,6 +89,7 @@ namespace Player
         {
             currentWeapon = gun;
             currentAmmo = gun.ammo;
+            ammoScript.SetAmmo(currentAmmo);
         }
 
         public float GetPlayerFireFill()
