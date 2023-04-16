@@ -7,7 +7,7 @@ public class LaserScript : MonoBehaviour
 {
     
     [Header("Values")]
-    [SerializeField] private float scoreMultiplier = 1;
+    [SerializeField] private int scoreMultiplier = 1;
 
     [Header("Fields")] 
     [SerializeField] private int refractionCount;
@@ -24,17 +24,7 @@ public class LaserScript : MonoBehaviour
     private Vector3 _direction;
     private Rigidbody _body;
 
-    [Header("Audio Clips")]
-    [SerializeField] private AudioClip clip1;
-    [SerializeField] private AudioClip clip2;
-    [SerializeField] private AudioClip clip3;
-    [SerializeField] private AudioClip clip4;
-    [SerializeField] private AudioClip clip5;
-    [SerializeField] private AudioClip clip6;
-    [SerializeField] private AudioClip clip7;
-    [SerializeField] private AudioClip clip8;
-    [SerializeField] private AudioClip clip9;
-    [SerializeField] private AudioClip clip10;
+
 
     private void Start()
     {
@@ -65,7 +55,7 @@ public class LaserScript : MonoBehaviour
         }
         else if (collision.gameObject.CompareTag("Enemy"))
         {
-            source.Play();
+            //source.Play();
             Debug.Log("Enemy Collision");
             collision.gameObject.GetComponent<EnemyBehavior>().DestroySelf();
             
@@ -91,30 +81,30 @@ public class LaserScript : MonoBehaviour
         if (multiply) { scoreMultiplier *= 2; }
         else { scoreMultiplier += 1; }
 
-        switch(scoreMultiplier)
-        {
-            case 1:
-                source.clip = clip1;
-                break;
-                case 2: source.clip = clip2; break;
-                case 3: source.clip = clip3;
-                break;
-                case 4: source.clip = clip4;
-                break;
-                case 5: source.clip = clip5;
-                break;
-                case 6: source.clip = clip6;    
-                break;
-                case 7: source.clip = clip7;
-                break;  
-                case 8: source.clip = clip8;
-                break;  
-                case 9: source.clip = clip9;
-                break;
-                case 10: source.clip = clip10;
-                break;
-                default: source.clip = clip10; break;
-        }
+        // switch(scoreMultiplier)
+        // {
+        //     case 1:
+        //         source.clip = clip1;
+        //         break;
+        //         case 2: source.clip = clip2; break;
+        //         case 3: source.clip = clip3;
+        //         break;
+        //         case 4: source.clip = clip4;
+        //         break;
+        //         case 5: source.clip = clip5;
+        //         break;
+        //         case 6: source.clip = clip6;    
+        //         break;
+        //         case 7: source.clip = clip7;
+        //         break;  
+        //         case 8: source.clip = clip8;
+        //         break;  
+        //         case 9: source.clip = clip9;
+        //         break;
+        //         case 10: source.clip = clip10;
+        //         break;
+        //         default: source.clip = clip10; break;
+        // }
     }
 
     private void Refract()

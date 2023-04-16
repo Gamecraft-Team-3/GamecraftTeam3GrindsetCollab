@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -18,17 +19,30 @@ namespace Player
         [SerializeField] private HealthbarScript healthbar;
         [SerializeField] private ScoreScript scoreUI;
 
+        [Header("Objects")] 
+        [SerializeField] private GameObject audioPlayer;
+
+        [Header("Audio Clips")] 
+        [SerializeField] private List<AudioClip> scoreAudioClips;
+
         private void Awake()
         {
             Instance = this;
         }
 
-        public void AddScore(int scoreToAdd, float multiplier)
+        public void AddScore(int scoreToAdd, int multiplier)
         {
             score += Mathf.RoundToInt((float)scoreToAdd * multiplier);
 
             // Hook the multiplier to the Score ui element for effects.
             scoreUI.SetScore(this.GetScore());
+
+            GameObject audioInstance = Instantiate(audioPlayer);
+            AudioSource source = audioInstance.GetComponent<AudioSource>();
+            
+            source.clip = scoreAudioClips[multiplier];
+            source.enabled = true;
+            source.Play();
         }
 
         public int GetScore()
