@@ -47,5 +47,10 @@ namespace Player
         {
             return Mathf.RoundToInt((float)health / (float)maxHealth);
         }
+
+        public int GetHealth()
+        {
+            return health;
+        }
     }
 }
