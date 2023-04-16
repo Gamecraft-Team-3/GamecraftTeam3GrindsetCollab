@@ -380,19 +380,12 @@ MonoBehaviour:
   colliderDelay: 0.05
   bounceCount: 3
   scoreForKill: 100
+  ricochet: {fileID: 8300000, guid: 9be1959103fc4d34f9d0cb1f18a1979f, type: 3}
   collider: {fileID: 4097323618171857134}
   clone: {fileID: 2083112953480940556}
   source: {fileID: -8409869325165340263}
-  clip1: {fileID: 8300000, guid: 084247cbc7a2d704e859cb2c3690ffc2, type: 3}
-  clip2: {fileID: 8300000, guid: 22386029c17860a45a08041b8243ff44, type: 3}
-  clip3: {fileID: 8300000, guid: a915ef82d1ebb9b4bacc3e3a4cf1a8e4, type: 3}
-  clip4: {fileID: 8300000, guid: ee8a5002d12b10b4bac8c248767921d9, type: 3}
-  clip5: {fileID: 8300000, guid: c83ab415a8bb17d478eef1010d7677a8, type: 3}
-  clip6: {fileID: 8300000, guid: eebb2f0b0a7682f45a77e68c4b8131c6, type: 3}
-  clip7: {fileID: 8300000, guid: 44f2fbf189e989f4d8d87243d391f75d, type: 3}
-  clip8: {fileID: 8300000, guid: 5b58390d6d4ef3d42909b4a2b2249011, type: 3}
-  clip9: {fileID: 8300000, guid: 652f6f84d73de674bbb10decdcef2024, type: 3}
-  clip10: {fileID: 8300000, guid: db7e35ca1fda20241aaf35ad0a38e4c6, type: 3}
+  audioSourceObject: {fileID: 7082787811544957409, guid: 06995165246791244ba3a6ccc98b67c3,
+    type: 3}
 --- !u!54 &5518796705945472717
 Rigidbody:
   m_ObjectHideFlags: 0

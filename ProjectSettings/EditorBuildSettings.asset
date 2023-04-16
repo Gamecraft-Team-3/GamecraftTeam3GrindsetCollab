@@ -9,12 +9,12 @@ EditorBuildSettings:
     path: Assets/Scenes/MainMenu.unity
     guid: 63a1e086c9300a645aa3099933d8af4c
   - enabled: 1
-    path: Assets/OutdoorsScene.unity
-    guid: 8124e5870f4fd4c779e7a5f994e84ad1
-  - enabled: 1
     path: Assets/Scenes/Scene_Blockout/Blockout_Level.unity
     guid: e01a55bc446cc2944ba8df4c8d00ec08
   - enabled: 1
     path: Assets/Scenes/DeathScreen.unity
     guid: b46bb0a45d1c25141a3ba3bd995daec3
+  - enabled: 0
+    path: Assets/OutdoorsScene.unity
+    guid: 8124e5870f4fd4c779e7a5f994e84ad1
   m_configObjects: {}
