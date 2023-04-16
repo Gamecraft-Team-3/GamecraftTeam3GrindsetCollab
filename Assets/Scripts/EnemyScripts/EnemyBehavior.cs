@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using Player;
 
 public class EnemyBehavior : MonoBehaviour
 {
@@ -120,4 +121,13 @@ public class EnemyBehavior : MonoBehaviour
         enemyManager.DestroyEnemy(this.gameObject);
     }
     #endregion
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            Debug.Log("Ouhcy Ouch");
+            PlayerManager.Instance.Damage(1);
+        }
+    }
 }
