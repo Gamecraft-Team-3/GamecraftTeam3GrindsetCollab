@@ -6,20 +6,15 @@ namespace Player
 {
     public class PlayerCombat : MonoBehaviour
     {
-        // [Header("Components")] 
-        // [SerializeField] private PlayerMeshController meshController;
-        
         [Header("Objects")] 
-        [SerializeField] private GameObject bulletPrefab;
         [SerializeField] private Transform meshTransform;
 
         [Header("Values")] 
         [SerializeField] private bool canShoot;
         [SerializeField] private bool isShootPressed;
-        
-        [Header("Fields")]
-        [SerializeField] private float fireRate;
-        [SerializeField] private bool fullAuto;
+        [SerializeField] private GunInfo currentWeapon;
+        [SerializeField] private int currentAmmo;
+        private float _fireTime;
 
         private void Start()
         {
@@ -29,7 +24,12 @@ namespace Player
 
         private void Update()
         {
-            if (fullAuto && canShoot && isShootPressed)
+            if (_fireTime < currentWeapon.fireRate)
+                _fireTime += Time.deltaTime;
+            else
+                _fireTime = currentWeapon.fireRate;
+
+            if (currentWeapon.fullAuto && canShoot && isShootPressed && currentAmmo > 0)
                 Shoot();
         }
 
@@ -37,7 +37,7 @@ namespace Player
         {
             isShootPressed = true;
 
-            if (!fullAuto)
+            if (!currentWeapon.fullAuto && canShoot && currentAmmo > 0)
                 Shoot();
         }
 
@@ -48,11 +48,14 @@ namespace Player
 
         private void Shoot()
         {
-            GameObject bulletInstance = Instantiate(bulletPrefab, meshTransform.position, Quaternion.identity);
+            GameObject bulletInstance = Instantiate(currentWeapon.laser, meshTransform.position, Quaternion.identity);
             bulletInstance.transform.forward = meshTransform.forward;
 
+            currentAmmo--;
+            _fireTime = 0f;
+
             canShoot = false;
-            StartCoroutine(SetCanShoot(fireRate));
+            StartCoroutine(SetCanShoot(currentWeapon.fireRate));
         }
 
         private IEnumerator SetCanShoot(float time)
@@ -60,6 +63,17 @@ namespace Player
             yield return new WaitForSeconds(time);
 
             canShoot = true;
+        }
+
+        public void SetCurrentWeapon(GunInfo gun)
+        {
+            currentWeapon = gun;
+            currentAmmo = gun.ammo;
+        }
+
+        public float GetPlayerFireFill()
+        {
+            return _fireTime / currentWeapon.fireRate;
         }
     }
 }

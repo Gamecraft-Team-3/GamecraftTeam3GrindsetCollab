@@ -12,7 +12,8 @@ namespace Player
         [SerializeField] private Camera camera;
         [SerializeField] private Transform tiltSource, moveForwardSource, roombaMesh;
         [SerializeField] private Transform bulletOrigin, bulletSource;
-
+        [SerializeField] private GameObject pointer;
+        
         [Header("Fields")] 
         [SerializeField] private float rJoyLerpSpeed;
         [SerializeField] private float turnDampTime;
@@ -116,19 +117,31 @@ namespace Player
             #endregion
 
             #region Laser
-
-            _lookLaser.SetPosition(0, bulletSource.position);
-            _lookLaser.SetPosition(1, bulletSource.position + (bulletSource.forward * 50));
             
-            RaycastHit hitLaser;
-            if (Physics.Raycast(bulletSource.position, bulletSource.forward, out hitLaser, Mathf.Infinity))
-            {
-                if (!hitLaser.transform.CompareTag("Laser"))
-                {
-                    _lookLaser.SetPosition(1, hitLaser.point);
-                }
-            }
+            Vector3 endPoint = bulletSource.position + (bulletSource.forward * 50);
+            _lookLaser.SetPosition(0, bulletSource.position);
+            _lookLaser.SetPosition(1, endPoint);
 
+            Vector3 pointerForward = endPoint - bulletSource.position;
+            pointer.transform.position = endPoint;
+            pointer.transform.forward = pointerForward;
+            
+            RaycastHit[] hitLaser = Physics.RaycastAll(bulletSource.position, bulletSource.forward, Mathf.Infinity);
+
+            foreach (var hit in hitLaser)
+            {
+                if (!hit.transform.CompareTag("Laser"))
+                {
+                    _lookLaser.SetPosition(1, hit.point);
+
+                    pointer.transform.position = hit.point;
+                    pointer.transform.forward = hit.normal;
+                    pointer.transform.position += hit.normal * 0.35f;
+                }
+                
+                break;
+            }
+            
             #endregion
         }
     }
