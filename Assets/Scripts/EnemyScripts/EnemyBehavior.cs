@@ -1,8 +1,10 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 using Player;
+using Random = UnityEngine.Random;
 
 public class EnemyBehavior : MonoBehaviour
 {
@@ -15,10 +17,14 @@ public class EnemyBehavior : MonoBehaviour
     private GameObject player = null;
     private float distanceToPlayer = 100;
     private bool shouldMove = true;
-    // Start is called before the first frame update
-    void Start()
-    {
 
+    [SerializeField] private GameObject deathAudioObject;
+    
+    private void OnDestroy()
+    {
+        GameObject audioInstance = Instantiate(deathAudioObject);
+        audioInstance.GetComponent<AudioSource>().Play();
+        Destroy(audioInstance, 5f);
     }
 
     private void Awake()

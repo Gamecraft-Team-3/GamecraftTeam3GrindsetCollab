@@ -270,6 +270,8 @@ MonoBehaviour:
   numWayPointsToPatrol: 4
   agent: {fileID: 1755020596622338969}
   idleTimer: 1.5
+  deathAudioObject: {fileID: 1115041171791421442, guid: 23cebf55d8d1e414494eab22bc0f6850,
+    type: 3}
 --- !u!95 &201985788635746888
 Animator:
   serializedVersion: 5
