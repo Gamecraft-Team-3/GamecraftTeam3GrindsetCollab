@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace Player
 {
@@ -43,7 +44,10 @@ namespace Player
                 health = 0;
 
             if (health == 0)
-                Debug.Log("Player Died");
+            {
+                SceneManager.LoadScene("DeathScreen");
+            }
+
             healthbar.UpdateHealth(health);
         }
 

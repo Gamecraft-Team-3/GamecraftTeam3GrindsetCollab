@@ -26,7 +26,6 @@ namespace Player
             currentAmmo = currentWeapon.ammo;
 
             ammoScript.SetAmmo(currentAmmo);
-
         }
 
         private void Update()
