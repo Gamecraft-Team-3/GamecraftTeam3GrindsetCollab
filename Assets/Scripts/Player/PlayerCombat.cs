@@ -102,5 +102,10 @@ namespace Player
         {
             return currentWeapon;
         }
+
+        public bool CanPlayerFire()
+        {
+            return canShoot;
+        }
     }
 }

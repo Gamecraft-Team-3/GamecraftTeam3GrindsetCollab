@@ -53,7 +53,7 @@ public class LaserScript : MonoBehaviour
         else if (collision.gameObject.CompareTag("Enemy"))
         {
             Debug.Log("Enemy Collision");
-            Destroy(collision.gameObject);
+            collision.gameObject.GetComponent<EnemyBehavior>().DestroySelf();
             
             PlayerManager.Instance.AddScore(scoreForKill, scoreMultiplier);
 

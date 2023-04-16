@@ -782,7 +782,8 @@ MonoBehaviour:
   player: {fileID: 731085}
   spawnPointParent: {fileID: 1286678338}
   enemySpawningTimer: 1
-  maxEnemies: 10
+  maxEnemies: 5
+  waveIncreaseAmount: 0
 --- !u!4 &268324726
 Transform:
   m_ObjectHideFlags: 0
