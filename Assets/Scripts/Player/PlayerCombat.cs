@@ -93,5 +93,10 @@ namespace Player
         {
             return _fireTime / currentWeapon.fireRate;
         }
+
+        public GunInfo GetCurrentGun()
+        {
+            return currentWeapon;
+        }
     }
 }
