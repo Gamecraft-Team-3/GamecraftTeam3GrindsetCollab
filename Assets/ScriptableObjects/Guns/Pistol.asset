@@ -15,9 +15,9 @@ MonoBehaviour:
   gunName: 1
   pickupMesh: {fileID: 460211690999991921, guid: 45fa3e98b7eaac546a935d49fb61f0e7,
     type: 3}
-  playerMesh: {fileID: -9189416772275766018, guid: b69360e94b9a5814f928da64bad5b448,
-    type: 3}
   laser: {fileID: 2083112953480940559, guid: 541c97aab951d5245a0ccbe0ac280949, type: 3}
+  gunOutline: {fileID: 21300000, guid: 340b886a3e058ea4ea7d4933cdf4567e, type: 3}
+  gunFill: {fileID: 21300000, guid: 3f990da9f91d4fa488dd7666319e1894, type: 3}
   fireRate: 1
   fullAuto: 0
   ammo: 20
