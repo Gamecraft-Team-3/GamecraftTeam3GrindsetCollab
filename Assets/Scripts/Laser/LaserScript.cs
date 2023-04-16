@@ -46,12 +46,13 @@ public class LaserScript : MonoBehaviour
         }
         else if (collision.gameObject.CompareTag("Enemy"))
         {
-            scoreMultiplier *= 2;
             Debug.Log("Enemy Collision");
             Destroy(collision.gameObject);
             
-            GameObject.FindWithTag("Player").GetComponent<PlayerManager>().AddScore(5, scoreMultiplier);
-                
+            GameObject.FindWithTag("Player").GetComponent<PlayerManager>().AddScore(100, scoreMultiplier);
+
+            scoreMultiplier *= 2;
+
             Refract();
         }
     }

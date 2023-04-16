@@ -23,6 +23,7 @@ namespace Player
             PlayerInputController.Instance.OnShootActionReleased += ShootReleased;
 
             currentAmmo = currentWeapon.ammo;
+            ammoScript.SetAmmo(currentAmmo);
         }
 
         private void Update()
