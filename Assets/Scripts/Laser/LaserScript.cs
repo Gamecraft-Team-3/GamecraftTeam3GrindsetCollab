@@ -57,6 +57,8 @@ public class LaserScript : MonoBehaviour
             sourceAudio.volume = 0.35f;
             sourceAudio.enabled = true;
             sourceAudio.Play();
+            
+            Destroy(audioInstance, 5f);
         }
         else if (collision.gameObject.CompareTag("Glass"))
         {

@@ -87,7 +87,8 @@ namespace Player
             source.volume = 0.1f;
             source.enabled = true;
             source.Play();
-
+            
+            Destroy(audioInstance, 5f);
         }
 
         public int GetHealthPercentage()
